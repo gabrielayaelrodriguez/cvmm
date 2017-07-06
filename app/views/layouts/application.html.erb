@@ -10,9 +10,8 @@
 
   <body>
   <nav>
-      <% if user_signed_in? %>
-          <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-      <% end %>
+    <%= render 'devise/menu/registration_items' %>
+  	<%= render 'devise/menu/login_items' %>
   </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
