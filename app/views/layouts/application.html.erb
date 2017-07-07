@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cvmm</title>
-    <%= csrf_meta_tags %>
 
+    <title>Cvmm</title>
+    
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
   </head>
 
   <body>
-  <nav>
-  <ul>
-    <li>
-      <%= link_to('Home', root_path)  %>  
-    </li>
-    <%= render 'devise/menu/registration_items' %>
-  	<%= render 'devise/menu/login_items' %>
-  </ul>
-  </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-    <%= yield %>
+      
+    <%= render 'menu/nav' %>
+
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+
+    </div>
+
   </body>
+
 </html>
