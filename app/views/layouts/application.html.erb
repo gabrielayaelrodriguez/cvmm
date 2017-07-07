@@ -13,14 +13,16 @@
   <body>
       
     <%= render 'menu/nav' %>
+    <main>
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
 
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+        <%= yield %>
 
-    </div>
-
+      </div>
+    </main>
+    <%= render 'footer/footer' %>
   </body>
 
 </html>
