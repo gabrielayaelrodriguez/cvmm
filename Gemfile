@@ -60,3 +60,5 @@ gem 'cancancan', '~> 1.10'
 gem 'materialize-sass'
 
 gem 'jquery-rails'
+
+gem 'better_errors'
