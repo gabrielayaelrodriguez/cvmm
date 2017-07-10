@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
   
   #scope path: ":user_id", as: "user" do
-  resources :users do
+  resources :user do
     resources :dashboard, only: [:index]
     resources :virtual_machines
   end

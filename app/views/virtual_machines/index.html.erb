@@ -14,7 +14,7 @@
     <% @virtual_machines.each do |virtual_machine| %>
       <tr>
         <td><%= virtual_machine.state %></td>
-        <td><%= link_to 'Show', user_virtual_machines_path(@user, virtual_machine) %></td>
+        <td><%= link_to 'Show', user_virtual_machine_path(@user, virtual_machine) %></td>
         <td><%= link_to 'Edit', edit_user_virtual_machine_path(@user, virtual_machine) %></td>
         <td><%= link_to 'Destroy', [virtual_machine.user, virtual_machine], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

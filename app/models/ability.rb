@@ -7,9 +7,17 @@ class Ability
         alias_action :read, :destroy, to: :administrate
 
         if user.admin?
-          can :administrate, VirtualMachine
+            can :administrate, User
+            can :administrate, VirtualMachine
         else
-          can :crud, VirtualMachine, :user_id => user.id
+            #can :manage, User, user_id: user.id
+            can :read, User do |u|
+                u.id == user.id
+            end
+            can :crud, VirtualMachine do |v|
+                v.user_id == user.id
+            end
+            #can :crud, VirtualMachine, :user_id => user.id
         end
     # Define abilities for the passed in user here. For example:
     #
