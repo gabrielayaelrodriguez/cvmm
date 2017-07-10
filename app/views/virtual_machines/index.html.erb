@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Virtual Machines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @virtual_machines.each do |virtual_machine| %>
+      <tr>
+        <td><%= virtual_machine.state %></td>
+        <td><%= link_to 'Show', user_virtual_machines_path(@user, virtual_machine) %></td>
+        <td><%= link_to 'Edit', edit_user_virtual_machine_path(@user, virtual_machine) %></td>
+        <td><%= link_to 'Destroy', [virtual_machine.user, virtual_machine], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Virtual Machine', new_user_virtual_machine_path %>

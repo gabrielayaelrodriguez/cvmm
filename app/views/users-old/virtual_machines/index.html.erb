@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Users Virtual Machines</h1>
-<% if @users_virtual_machines.any? %>
 
 <table>
   <thead>
@@ -10,8 +9,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
- 
 
   <tbody>
     <% @users_virtual_machines.each do |users_virtual_machine| %>
@@ -26,9 +23,5 @@
 </table>
 
 <br>
-<% else %>
 
-  nada
-
-<% end %>
 <%= link_to 'New Users Virtual Machine', new_users_virtual_machine_path %>

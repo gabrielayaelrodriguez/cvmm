@@ -1,9 +1,9 @@
 require "application_system_test_case"
 
-class Users::VirtualMachinesTest < ApplicationSystemTestCase
+class VirtualMachinesTest < ApplicationSystemTestCase
   # test "visiting the index" do
-  #   visit users_virtual_machines_url
+  #   visit virtual_machines_url
   #
-  #   assert_selector "h1", text: "Users::VirtualMachine"
+  #   assert_selector "h1", text: "VirtualMachine"
   # end
 end

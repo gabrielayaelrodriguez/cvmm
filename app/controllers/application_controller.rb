@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+	protect_from_forgery with: :exception
 
 	def after_sign_in_path_for(resource)
-  		users_dashboard_index_path
+  		user_dashboard_index_path(current_user)
 	end
 
 	rescue_from CanCan::AccessDenied do |exception|

@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
   def check_session
   	if user_signed_in?
-    	redirect_to users_dashboard_index_path
+    	redirect_to user_dashboard_index_path(current_user)
     end
   end
 

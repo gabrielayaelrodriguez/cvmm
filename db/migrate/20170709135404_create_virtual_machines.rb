@@ -1,6 +1,6 @@
-class CreateUsersVirtualMachines < ActiveRecord::Migration[5.1]
+class CreateVirtualMachines < ActiveRecord::Migration[5.1]
   def change
-    create_table :users_virtual_machines do |t|
+    create_table :virtual_machines do |t|
       t.string :state
       t.references :user, foreign_key: true
 

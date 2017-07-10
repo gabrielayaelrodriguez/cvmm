@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>State:</strong>
+  <%= @virtual_machine.state %>
+</p>
+
+<%= link_to 'Edit', edit_user_virtual_machine_path(@user, @virtual_machine) %> |
+<%= link_to 'Back', user_virtual_machines_path %>
