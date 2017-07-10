@@ -93,7 +93,7 @@ class VirtualMachinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def require_params
-      params.require(:virtual_machine).permit(:state)
+      params.require(:virtual_machine).permit(:name, :state, :os, :memory, :cores)
     end
 
     def findparent

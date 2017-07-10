@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170709135404) do
+ActiveRecord::Schema.define(version: 20170710214020) do
+
+  create_table "disks", force: :cascade do |t|
+    t.string "label"
+    t.string "capacity"
+    t.string "model"
+    t.integer "virtual_machine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["virtual_machine_id"], name: "index_disks_on_virtual_machine_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,7 +42,11 @@ ActiveRecord::Schema.define(version: 20170709135404) do
   end
 
   create_table "virtual_machines", force: :cascade do |t|
-    t.string "state"
+    t.string "name"
+    t.string "state", default: "shut down"
+    t.string "os"
+    t.integer "memory"
+    t.integer "cores"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

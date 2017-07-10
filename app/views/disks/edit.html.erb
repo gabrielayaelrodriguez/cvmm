@@ -1,0 +1,6 @@
+<h1>Editing Disk</h1>
+
+<%= render 'form', disk: @disk %>
+
+<%= link_to 'Show', user_virtual_machine_disk_path(@user, @virtual_machine, @disk) %> |
+<%= link_to 'Back', user_virtual_machine_path(@user, @virtual_machine) %>

@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Label:</strong>
+  <%= @disk.label %>
+</p>
+<p>
+  <strong>Model:</strong>
+  <%= @disk.model %>
+</p>
+<p>
+  <strong>Capacity:</strong>
+  <%= @disk.capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_virtual_machine_disk_path(@user, @virtual_machine, @disk) %> |
+<%= link_to 'Back', user_virtual_machine_path(@user, @virtual_machine) %>

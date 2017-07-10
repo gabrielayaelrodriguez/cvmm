@@ -1,0 +1,32 @@
+<%= form_for [@user, @virtual_machine, @disk] do |form| %>
+  <% if @disk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@disk.errors.count, "error") %> prohibited this disk from being saved:</h2>
+
+      <ul>
+      <% @disk.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :label %>
+    <%= form.text_field :label, id: :disk_label %>
+  </div>
+
+  <div class="field">
+    <%= form.label :model %>
+    <%= form.text_field :model, id: :disk_model %>
+  </div>
+
+  <div class="field">
+    <%= form.label :capacity %>
+    <%= form.text_field :capacity, id: :disk_capacity %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

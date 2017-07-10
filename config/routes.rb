@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   #scope path: ":user_id", as: "user" do
   resources :user do
     resources :dashboard, only: [:index]
-    resources :virtual_machines
+    resources :virtual_machines do
+      resources :disks
+    end
   end
 
 end

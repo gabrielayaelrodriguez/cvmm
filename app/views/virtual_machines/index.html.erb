@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th>State</th>
       <th colspan="3"></th>
     </tr>
@@ -13,6 +14,7 @@
   <tbody>
     <% @virtual_machines.each do |virtual_machine| %>
       <tr>
+        <td><%= virtual_machine.name %></td>
         <td><%= virtual_machine.state %></td>
         <td><%= link_to 'Show', user_virtual_machine_path(@user, virtual_machine) %></td>
         <td><%= link_to 'Edit', edit_user_virtual_machine_path(@user, virtual_machine) %></td>

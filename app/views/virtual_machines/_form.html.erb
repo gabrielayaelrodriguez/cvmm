@@ -12,8 +12,24 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>    
+  <div class="field">
     <%= form.label :state %>
     <%= form.text_field :state %>
+  </div>
+  <div class="field">
+    <%= form.label :os %>
+    <%= form.text_field :os %>
+  </div>
+  <div class="field">
+    <%= form.label :memory %>
+    <%= form.text_field :memory %>
+  </div>
+  <div class="field">
+    <%= form.label :cores %>
+    <%= form.text_field :cores %>
   </div>
 
   <div class="actions">

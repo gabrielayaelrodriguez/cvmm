@@ -1,9 +1,53 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Name:</strong>
+  <%= @virtual_machine.name %>
+</p>
+<p>
   <strong>State:</strong>
   <%= @virtual_machine.state %>
 </p>
+<p>
+  <strong>OS:</strong>
+  <%= @virtual_machine.os %>
+</p>
+<p>
+  <strong>Memory:</strong>
+  <%= @virtual_machine.memory %>
+</p>
+<p>
+  <strong>Cores:</strong>
+  <%= @virtual_machine.cores %>
+</p>
 
+<h2>Disks</h2>
+
+<table class="table">
+  <tr>
+    <th>Capacity</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @virtual_machine.disks.each do |disk| %>
+      <tr>
+        <td><%= disk.label %></td>
+        <td><%= disk.model %></td>
+        <td><%= disk.capacity %></td>
+
+        <td><%= link_to 'Show', user_virtual_machine_disk_path(@user, @virtual_machine, disk) %></td>
+        <td><%= link_to 'Edit', edit_user_virtual_machine_disk_path(@user, @virtual_machine, disk) %></td>
+        <td><%= link_to 'Destroy', [@user, disk.virtual_machine, disk],
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+
+
+  <%= link_to 'ADD NEW DISK', new_user_virtual_machine_disk_path(@user, @virtual_machine) %>
+
+<br>
 <%= link_to 'Edit', edit_user_virtual_machine_path(@user, @virtual_machine) %> |
 <%= link_to 'Back', user_virtual_machines_path %>
