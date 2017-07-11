@@ -3,6 +3,9 @@ class DisksController < ApplicationController
   before_action :findparents
   before_action :set_disk, only: [:show, :edit, :update, :destroy]
 
+  #load_and_authorize_resource :virtual_machine
+  #load_and_authorize_resource :through => :virtual_machine
+
   # GET /disks
   # GET /disks.json
   #def index
@@ -12,11 +15,12 @@ class DisksController < ApplicationController
   # GET /disks/1
   # GET /disks/1.json
   def show
-    authorize! :read, @disk
+    authorize! :read, @virtual_machine
   end
 
   # GET /disks/new
   def new
+    authorize! :read, @virtual_machine
     @disk = Disk.new
   end
 
@@ -27,6 +31,7 @@ class DisksController < ApplicationController
   # POST /disks
   # POST /disks.json
   def create
+    authorize! :create, @virtual_machine
     @disk = Disk.new(disk_params)
     @disk.virtual_machine=@virtual_machine
 
@@ -44,6 +49,7 @@ class DisksController < ApplicationController
   # PATCH/PUT /disks/1
   # PATCH/PUT /disks/1.json
   def update
+    authorize! :update, @virtual_machine
     respond_to do |format|
       if @disk.update(disk_params)
         format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully updated.' }
@@ -58,6 +64,7 @@ class DisksController < ApplicationController
   # DELETE /disks/1
   # DELETE /disks/1.json
   def destroy
+    authorize! :destroy, @virtual_machine
     @disk.destroy
     respond_to do |format|
       format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully destroyed.' }

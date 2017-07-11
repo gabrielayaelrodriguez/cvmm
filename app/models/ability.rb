@@ -17,15 +17,15 @@ class Ability
             can :crud, VirtualMachine do |v|
                 v.user_id == user.id
             end
-            can :crud, Disk do |d|
+            #can :crud, Disk do |d|
 
                 #DADADADADADADAD
-                user.virtual_machines do |vm|
-                    vm.disks do |d|
-                        d.virtual_machine_id == vm.id
-                    end
-                end
-            end
+                #user.virtual_machines do |vm|
+                #    vm.disks do |d|
+                #        d.virtual_machine_id == vm.id
+                #    end
+                #end
+            #end
             #can :crud, VirtualMachine, :user_id => user.id
         end
     # Define abilities for the passed in user here. For example:
