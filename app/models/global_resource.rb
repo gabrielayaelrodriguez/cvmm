@@ -1,0 +1,2 @@
+class GlobalResource < ApplicationRecord
+end

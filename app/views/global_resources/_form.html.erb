@@ -1,0 +1,47 @@
+<%= form_with(model: global_resource, local: true) do |form| %>
+  <% if global_resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(global_resource.errors.count, "error") %> prohibited this global_resource from being saved:</h2>
+
+      <ul>
+      <% global_resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :totalRAM %>
+    <%= form.number_field :totalRAM, id: :global_resource_totalRAM %>
+  </div>
+
+  <div class="field">
+    <%= form.label :totalUsableRAM %>
+    <%= form.number_field :totalUsableRAM, id: :global_resource_totalUsableRAM %>
+  </div>
+
+  <div class="field">
+    <%= form.label :totalDiskSpace %>
+    <%= form.number_field :totalDiskSpace, id: :global_resource_totalDiskSpace %>
+  </div>
+
+  <div class="field">
+    <%= form.label :totalUsableDiskSpace %>
+    <%= form.number_field :totalUsableDiskSpace, id: :global_resource_totalUsableDiskSpace %>
+  </div>
+
+  <div class="field">
+    <%= form.label :totalCPUCores %>
+    <%= form.number_field :totalCPUCores, id: :global_resource_totalCPUCores %>
+  </div>
+
+  <div class="field">
+    <%= form.label :totalUsableCPUCores %>
+    <%= form.number_field :totalUsableCPUCores, id: :global_resource_totalUsableCPUCores %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

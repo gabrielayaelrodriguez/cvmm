@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  #resources :global_resources
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   devise_for :users
@@ -13,5 +14,7 @@ Rails.application.routes.draw do
       resources :disks
     end
   end
+
+  resource :global_resource, only: [:show, :edit, :update]
 
 end

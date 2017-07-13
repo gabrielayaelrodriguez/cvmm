@@ -4,29 +4,21 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
         alias_action :create, :read, :update, :destroy, to: :crud
-        alias_action :read, :destroy, to: :administrate
 
         if user.admin?
-            can :administrate, User
-            can :administrate, VirtualMachine
+            can :read, :all
+            can :update, GlobalResource
+            can :destroy, User
+            can :destroy, VirtualMachine
+            cannot [:create, :update, :destroy], Disk
+
         else
-            #can :manage, User, user_id: user.id
-            can :read, User do |u|
+            can [:read, :update], User do |u|
                 u.id == user.id
             end
-            can :crud, VirtualMachine do |v|
+            can [:create, :read, :update, :destroy], VirtualMachine do |v|
                 v.user_id == user.id
             end
-            #can :crud, Disk do |d|
-
-                #DADADADADADADAD
-                #user.virtual_machines do |vm|
-                #    vm.disks do |d|
-                #        d.virtual_machine_id == vm.id
-                #    end
-                #end
-            #end
-            #can :crud, VirtualMachine, :user_id => user.id
         end
     # Define abilities for the passed in user here. For example:
     #

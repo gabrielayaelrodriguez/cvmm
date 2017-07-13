@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Global Resources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Totalram</th>
+      <th>Totalusableram</th>
+      <th>Totaldiskspace</th>
+      <th>Totalusablediskspace</th>
+      <th>Totalcpucores</th>
+      <th>Totalusablecpucores</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @global_resources.each do |global_resource| %>
+      <tr>
+        <td><%= global_resource.totalRAM %></td>
+        <td><%= global_resource.totalUsableRAM %></td>
+        <td><%= global_resource.totalDiskSpace %></td>
+        <td><%= global_resource.totalUsableDiskSpace %></td>
+        <td><%= global_resource.totalCPUCores %></td>
+        <td><%= global_resource.totalUsableCPUCores %></td>
+        <td><%= link_to 'Show', global_resource %></td>
+        <td><%= link_to 'Edit', edit_global_resource_path(global_resource) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

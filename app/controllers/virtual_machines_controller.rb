@@ -28,7 +28,7 @@ class VirtualMachinesController < ApplicationController
 
   # GET /virtual_machines/new
   def new
-    authorize! :read, @user
+    authorize! :update, @user
     @virtual_machine = VirtualMachine.new
   end
 

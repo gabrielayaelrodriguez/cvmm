@@ -20,12 +20,13 @@ class DisksController < ApplicationController
 
   # GET /disks/new
   def new
-    authorize! :read, @virtual_machine
+    authorize! :create, @virtual_machine
     @disk = Disk.new
   end
 
   # GET /disks/1/edit
   def edit
+    authorize! :update, @virtual_machine
   end
 
   # POST /disks
@@ -84,7 +85,11 @@ class DisksController < ApplicationController
     end
 
     def findparents
-      @user = User.find(params[:user_id])
-      @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
+      if current_user.admin?
+        authorize! :create, @virtual_machine
+      else
+        @user = User.find(params[:user_id])
+        @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
+      end
     end
 end
