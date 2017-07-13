@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 20170713181418) do
 
   create_table "disks", force: :cascade do |t|
     t.string "label"
-    t.string "capacity"
     t.string "model"
+    t.integer "capacity"
     t.integer "virtual_machine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

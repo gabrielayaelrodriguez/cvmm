@@ -90,6 +90,7 @@ class DisksController < ApplicationController
       else
         @user = User.find(params[:user_id])
         @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
+        @global_resource = GlobalResource.first
       end
     end
 end

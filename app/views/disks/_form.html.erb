@@ -1,4 +1,4 @@
-<%= form_for [@user, @virtual_machine, @disk] do |form| %>
+<%= simple_form_for [@user, @virtual_machine, @disk] do |f| %>
   <% if @disk.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@disk.errors.count, "error") %> prohibited this disk from being saved:</h2>
@@ -11,22 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :label %>
-    <%= form.text_field :label, id: :disk_label %>
-  </div>
+  <%= f.input :label %>
+  <%= f.input :model %>
+  <%= f.input :capacity, input_html: { max: @global_resource.totalUsableDiskSpace } %>
 
-  <div class="field">
-    <%= form.label :model %>
-    <%= form.text_field :model, id: :disk_model %>
-  </div>
+  <%= f.button :submit %>
 
-  <div class="field">
-    <%= form.label :capacity %>
-    <%= form.text_field :capacity, id: :disk_capacity %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

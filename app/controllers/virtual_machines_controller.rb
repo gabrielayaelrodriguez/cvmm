@@ -98,5 +98,6 @@ class VirtualMachinesController < ApplicationController
 
     def findparent
       @user = User.find(params[:user_id])
+      @global_resource = GlobalResource.first
     end
 end
