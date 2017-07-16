@@ -40,19 +40,14 @@ class DisksController < ApplicationController
     authorize! :update, @user
     @disk = Disk.new(disk_params)
     @disk.virtual_machine=@virtual_machine
-
-    if !(errors)
-      respond_to do |format|
-        if @disk.save
-          format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully created.' }
-          format.json { render :show, status: :created, location: @disk }
-        else
-          format.html { render :new }
-          format.json { render json: @disk.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @disk.save
+        format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully created.' }
+        format.json { render :show, status: :created, location: @disk }
+      else
+        format.html { render :new }
+        format.json { render json: @disk.errors, status: :unprocessable_entity }
       end
-    else
-      render :new
     end
   end
 
@@ -60,18 +55,14 @@ class DisksController < ApplicationController
   # PATCH/PUT /disks/1.json
   def update
     authorize! :update, @virtual_machine
-    if !(errors)
-      respond_to do |format|
-        if @disk.update(disk_params)
-          format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully updated.' }
-          format.json { render :show, status: :ok, location: @disk }
-        else
-          format.html { render :edit }
-          format.json { render json: @disk.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @disk.update(disk_params)
+        format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully updated.' }
+        format.json { render :show, status: :ok, location: @disk }
+      else
+        format.html { render :edit }
+        format.json { render json: @disk.errors, status: :unprocessable_entity }
       end
-    else
-      render :edit
     end
   end
 
@@ -117,13 +108,4 @@ class DisksController < ApplicationController
       #end
     end
 
-    def errors
-      error = false
-      if params[:disk][:capacity].to_i > @space
-        @disk.errors.add(:capacity, "Must be less than #{@space}")
-        error = true
-      end
-      return error
-
-    end
 end

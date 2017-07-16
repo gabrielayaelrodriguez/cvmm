@@ -44,21 +44,17 @@ class VirtualMachinesController < ApplicationController
   def create
     authorize! :update, @user
     @virtual_machine = VirtualMachine.new(require_params)
-    if !errors
-      @virtual_machine.user=@user
-      #@user.virtual_machines.new(require_params)
+    @virtual_machine.user=@user
+    #@user.virtual_machines.new(require_params)
 
-      respond_to do |format|
-        if @virtual_machine.save
-          format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully created.' }
-          format.json { render :show, status: :created, location: @virtual_machine }
-        else
-          format.html { render :new }
-          format.json { render json: @virtual_machine.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @virtual_machine.save
+        format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully created.' }
+        format.json { render :show, status: :created, location: @virtual_machine }
+      else
+        format.html { render :new }
+        format.json { render json: @virtual_machine.errors, status: :unprocessable_entity }
       end
-    else
-      render :new
     end
   end
 
@@ -66,18 +62,14 @@ class VirtualMachinesController < ApplicationController
   # PATCH/PUT /virtual_machines/1.json
   def update
     authorize! :update, @virtual_machine
-    if !uperrors
-      respond_to do |format|
-        if @virtual_machine.update(require_params)
-          format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully updated.' }
-          format.json { render :show, status: :ok, location: @virtual_machine }
-        else
-          format.html { render :edit }
-          format.json { render json: @virtual_machine.errors, status: :unprocessable_entity }
-        end
+    respond_to do |format|
+      if @virtual_machine.update(require_params)
+        format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully updated.' }
+        format.json { render :show, status: :ok, location: @virtual_machine }
+      else
+        format.html { render :edit }
+        format.json { render json: @virtual_machine.errors, status: :unprocessable_entity }
       end
-    else
-      render :edit
     end
   end
 
@@ -117,33 +109,4 @@ class VirtualMachinesController < ApplicationController
       
     end
 
-    def errors
-      error = false
-      if params[:virtual_machine][:memory].to_i > @ram
-        @virtual_machine.errors.add(:memory, "Must be less than #{@ram}")
-        error = true
-      end
-      if params[:virtual_machine][:cores].to_i > @cores
-        @virtual_machine.errors.add(:cores, "Must be less than #{@cores}")
-        error = true
-      end
-
-      return error
-
-    end
-
-    def uperrors
-      error = false
-      if params[:virtual_machine][:memory].to_i > @ram
-        @virtual_machine.errors.add(:memory, "Must be less than #{@ram}")
-        error = true
-      end
-      if params[:virtual_machine][:cores].to_i > @cores
-        @virtual_machine.errors.add(:cores, "Must be less than #{@cores}")
-        error = true
-      end
-
-      return error
-
-    end
 end
