@@ -9,4 +9,4 @@
 
 User.create! :name => 'admin', :admin => true, :email => 'admin@admin', :password => 'topsecret', :password_confirmation => 'topsecret'
 
-GlobalResource.create! :totalRAM => 0, :totalUsableRAM => 0, :totalDiskSpace => 0, :totalUsableDiskSpace => 0, :totalCPUCores => 0, :totalUsableCPUCores => 0
+GlobalResource.create! :totalRAM => 0,  :totalDiskSpace => 0, :totalCPUCores => 0

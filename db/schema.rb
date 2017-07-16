@@ -23,12 +23,9 @@ ActiveRecord::Schema.define(version: 20170713181418) do
   end
 
   create_table "global_resources", force: :cascade do |t|
-    t.integer "totalRAM"
-    t.integer "totalUsableRAM"
-    t.integer "totalDiskSpace"
-    t.integer "totalUsableDiskSpace"
-    t.integer "totalCPUCores"
-    t.integer "totalUsableCPUCores"
+    t.integer "totalRAM", default: 0
+    t.integer "totalDiskSpace", default: 0
+    t.integer "totalCPUCores", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

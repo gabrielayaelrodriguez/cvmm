@@ -4,16 +4,16 @@ class GlobalResource < ApplicationRecord
 	#validates :totalRAM, numericality: { greater_than_or_equal_to: 0 }
 
 	def freeDiskSpace
-		self.totalUsableDiskSpace - Disk.all.sum(:capacity)
+		self.totalDiskSpace - Disk.all.sum(:capacity)
 		
 		#self.totalUsableDiskSpace - inUse
 	end
 
 	def freeRAM
-		(self.totalUsableRAM - VirtualMachine.all.sum(:memory))
+		(self.totalRAM - VirtualMachine.all.sum(:memory))
 	end
 
 	def freeCPUCores
-		self.totalUsableCPUCores - VirtualMachine.all.sum(:cores)
+		self.totalCPUCores - VirtualMachine.all.sum(:cores)
 	end
 end

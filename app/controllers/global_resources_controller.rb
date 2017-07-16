@@ -60,6 +60,6 @@ class GlobalResourcesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def global_resource_params
-      params.require(:global_resource).permit(:totalRAM, :totalUsableRAM, :totalDiskSpace, :totalUsableDiskSpace, :totalCPUCores, :totalUsableCPUCores)
+      params.require(:global_resource).permit(:totalRAM, :totalDiskSpace, :totalCPUCores)
     end
 end

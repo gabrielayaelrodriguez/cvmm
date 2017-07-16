@@ -12,11 +12,8 @@
   <% end %>
 
   <%= f.input :totalRAM, input_html: { min: '0' } %>
-  <%= f.input :totalUsableRAM, input_html: { min: '0', max: @global_resource.totalRAM } %>
   <%= f.input :totalDiskSpace, input_html: { min: '0' } %>
-  <%= f.input :totalUsableDiskSpace, input_html: { min: '0', max: @global_resource.totalDiskSpace } %>
   <%= f.input :totalCPUCores, input_html: { min: '0' } %>
-  <%= f.input :totalUsableCPUCores, input_html: { min: '0', max: @global_resource.totalCPUCores } %>
   
   <%= f.button :submit %>
   
