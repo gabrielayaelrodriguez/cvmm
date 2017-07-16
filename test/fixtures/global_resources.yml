@@ -2,16 +2,5 @@
 
 one:
   totalRAM: 1
-  totalUsableRAM: 1
   totalDiskSpace: 1
-  totalUsableDiskSpace: 1
   totalCPUCores: 1
-  totalUsableCPUCores: 1
-
-two:
-  totalRAM: 1
-  totalUsableRAM: 1
-  totalDiskSpace: 1
-  totalUsableDiskSpace: 1
-  totalCPUCores: 1
-  totalUsableCPUCores: 1
