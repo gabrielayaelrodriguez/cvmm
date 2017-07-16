@@ -3,12 +3,7 @@ class DisksController < ApplicationController
   #load_and_authorize_resource :virtual_machine
   #load_and_authorize_resource :through => :virtual_machine
   
-
-  before_action :findparents
   before_action :set_disk, only: [:show, :edit, :update, :destroy]
-
-  #load_and_authorize_resource :virtual_machine
-  #load_and_authorize_resource :through => :virtual_machine
 
   # GET /disks
   # GET /disks.json
@@ -88,6 +83,7 @@ class DisksController < ApplicationController
         @user = User.find(params[:user_id])
         @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
         @disk = @virtual_machine.disks.find(params[:id])
+        @global_resource = GlobalResource.first
         @space = @disk.capacity + @global_resource.freeDiskSpace
       end
     end
@@ -95,17 +91,6 @@ class DisksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def disk_params
       params.require(:disk).permit(:label, :model, :capacity)
-    end
-
-    def findparents
-      #if current_user.admin?
-      #  authorize! :create, @virtual_machine
-      #else
-        @user = User.find(params[:user_id])
-        @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
-        @global_resource = GlobalResource.first
-        @space = @global_resource.freeDiskSpace
-      #end
     end
 
 end
