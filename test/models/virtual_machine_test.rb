@@ -19,4 +19,14 @@ class VirtualMachineTest < ActiveSupport::TestCase
 	  assert vm.save
   end
 
+  test "should not create a machine with more memory than allowed" do
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: @user, cores: 0, memory: 500)
+	  assert_not vm.save
+  end
+
+  test "should not create a machine with more CPU cores than allowed" do
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: @user, cores: 500, memory: 0)
+	  assert_not vm.save
+  end
+
 end

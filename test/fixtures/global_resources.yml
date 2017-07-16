@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  totalRAM: 1
+  totalRAM: 2
   totalDiskSpace: 1
-  totalCPUCores: 1
+  totalCPUCores: 2
