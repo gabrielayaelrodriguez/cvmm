@@ -41,14 +41,18 @@ class DisksController < ApplicationController
     @disk = Disk.new(disk_params)
     @disk.virtual_machine=@virtual_machine
 
-    respond_to do |format|
-      if @disk.save
-        format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully created.' }
-        format.json { render :show, status: :created, location: @disk }
-      else
-        format.html { render :new }
-        format.json { render json: @disk.errors, status: :unprocessable_entity }
+    if !(errors)
+      respond_to do |format|
+        if @disk.save
+          format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully created.' }
+          format.json { render :show, status: :created, location: @disk }
+        else
+          format.html { render :new }
+          format.json { render json: @disk.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      render :new
     end
   end
 
@@ -56,14 +60,18 @@ class DisksController < ApplicationController
   # PATCH/PUT /disks/1.json
   def update
     authorize! :update, @virtual_machine
-    respond_to do |format|
-      if @disk.update(disk_params)
-        format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully updated.' }
-        format.json { render :show, status: :ok, location: @disk }
-      else
-        format.html { render :edit }
-        format.json { render json: @disk.errors, status: :unprocessable_entity }
+    if !(errors)
+      respond_to do |format|
+        if @disk.update(disk_params)
+          format.html { redirect_to user_virtual_machine_path(@user, @virtual_machine), notice: 'Disk was successfully updated.' }
+          format.json { render :show, status: :ok, location: @disk }
+        else
+          format.html { render :edit }
+          format.json { render json: @disk.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      render :edit
     end
   end
 
@@ -89,7 +97,7 @@ class DisksController < ApplicationController
         @user = User.find(params[:user_id])
         @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
         @disk = @virtual_machine.disks.find(params[:id])
-        @global_resource = GlobalResource.first
+        @space = @disk.capacity + @global_resource.freeDiskSpace
       end
     end
 
@@ -105,6 +113,17 @@ class DisksController < ApplicationController
         @user = User.find(params[:user_id])
         @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
         @global_resource = GlobalResource.first
+        @space = @global_resource.freeDiskSpace
       #end
+    end
+
+    def errors
+      error = false
+      if params[:disk][:capacity].to_i > @space
+        @disk.errors.add(:capacity, "Must be less than #{@space}")
+        error = true
+      end
+      return error
+
     end
 end

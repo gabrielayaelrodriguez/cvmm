@@ -13,7 +13,7 @@
 
   <%= f.input :label %>
   <%= f.input :model %>
-  <%= f.input :capacity, input_html: { max: @global_resource.totalUsableDiskSpace } %>
+  <%= f.input :capacity, input_html: { min: '0', max: @space } %>
 
   <%= f.button :submit %>
 
