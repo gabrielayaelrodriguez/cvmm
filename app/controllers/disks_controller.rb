@@ -1,5 +1,9 @@
 class DisksController < ApplicationController
   before_action :authenticate_user!
+  #load_and_authorize_resource :virtual_machine
+  #load_and_authorize_resource :through => :virtual_machine
+  
+
   before_action :findparents
   before_action :set_disk, only: [:show, :edit, :update, :destroy]
 
@@ -15,12 +19,13 @@ class DisksController < ApplicationController
   # GET /disks/1
   # GET /disks/1.json
   def show
+    #afdasd
     authorize! :read, @virtual_machine
   end
 
   # GET /disks/new
   def new
-    authorize! :create, @virtual_machine
+    authorize! :update, @user
     @disk = Disk.new
   end
 
@@ -32,7 +37,7 @@ class DisksController < ApplicationController
   # POST /disks
   # POST /disks.json
   def create
-    authorize! :create, @virtual_machine
+    authorize! :update, @user
     @disk = Disk.new(disk_params)
     @disk.virtual_machine=@virtual_machine
 
@@ -76,7 +81,16 @@ class DisksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_disk
-      @disk = @virtual_machine.disks.find(params[:id])
+      if current_user.admin?
+        @disk=Disk.find(params[:id])
+        @virtual_machine=VirtualMachine.find(@disk.virtual_machine_id)
+        @user=User.find(@virtual_machine.user_id)
+      else
+        @user = User.find(params[:user_id])
+        @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
+        @disk = @virtual_machine.disks.find(params[:id])
+        @global_resource = GlobalResource.first
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -85,12 +99,12 @@ class DisksController < ApplicationController
     end
 
     def findparents
-      if current_user.admin?
-        authorize! :create, @virtual_machine
-      else
+      #if current_user.admin?
+      #  authorize! :create, @virtual_machine
+      #else
         @user = User.find(params[:user_id])
         @virtual_machine = @user.virtual_machines.find(params[:virtual_machine_id])
         @global_resource = GlobalResource.first
-      end
+      #end
     end
 end

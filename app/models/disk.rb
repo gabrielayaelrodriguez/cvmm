@@ -3,5 +3,5 @@ class Disk < ApplicationRecord
 
 	validates :label, :model, presence: true
 
-	validates :capacity, numericality: { less_than_or_equal_to: GlobalResource.first().totalUsableDiskSpace }, presence: true
+	validates :capacity, numericality: { less_than_or_equal_to: GlobalResource.first().freeDiskSpace }, presence: true
 end

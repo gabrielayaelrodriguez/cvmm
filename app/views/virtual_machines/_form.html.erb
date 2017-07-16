@@ -13,8 +13,8 @@
   <%= f.input :name %>
   <%= f.input :state %>
   <%= f.input :os %>
-  <%= f.input :memory, input_html: { max: @global_resource.totalUsableRAM } %>
-  <%= f.input :cores, input_html: { max: @global_resource.totalUsableCPUCores } %>
+  <%= f.input :memory, input_html: { min: '0', max: @ram } %>
+  <%= f.input :cores, input_html: { min: '0', max: @cores } %>
 
   <%= f.button :submit %>
 

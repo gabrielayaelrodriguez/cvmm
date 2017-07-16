@@ -30,5 +30,17 @@
   <%= @global_resource.totalUsableCPUCores %>
 </p>
 
-<%= link_to 'Edit', edit_global_resource_path(@global_resource) %> |
+<p>
+  <strong>FREE DISK SPACE:</strong>
+  <%= @global_resource.freeDiskSpace %>
+</p>
+<p>
+  <strong>FREE RAM:</strong>
+  <%= @global_resource.freeRAM %>
+</p>
+<p>
+  <strong>FREE CORES:</strong>
+  <%= @global_resource.freeCPUCores %>
+</p>
+<%= link_to 'Edit', edit_global_resource_path %> |
 <%= link_to 'Back', global_resource_path %>
