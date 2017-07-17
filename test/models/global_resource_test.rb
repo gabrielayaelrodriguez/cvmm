@@ -6,9 +6,7 @@ class GlobalResourceTest < ActiveSupport::TestCase
   # end
 
   setup do
-  	@user = User.create(:name => 'user', :email => 'asd@asd', :password => 'pass', :password_confirmation => 'pass')
-  	@vm = VirtualMachine.create(name: 'myVM', os: 'linux', user: @user, cores: 1, memory: 1)
-  	@gr = GlobalResource.first
+  	@gr = global_resources(:gr)
   end
 
   test "should not reduce global resource memory if it is in use" do

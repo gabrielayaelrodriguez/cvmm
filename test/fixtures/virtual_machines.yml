@@ -11,4 +11,4 @@ vm1:
  os: "linux"
  memory: 1
  cores: 1
- user: :one
+ user: :user1

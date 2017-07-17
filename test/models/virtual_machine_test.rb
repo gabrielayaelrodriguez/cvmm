@@ -5,27 +5,23 @@ class VirtualMachineTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  #setup do
-  #  @user = User.new(:name => 'user', :email => 'asd@asd', :password => 'pass', :password_confirmation => 'pass')
-  #end
-
   test "should not create a machine without attributes" do
 	  vm = VirtualMachine.new()
 	  assert_not vm.save
   end
 
   test "should create a machine successfully" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:one), cores: 0, memory: 0)
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:user1), cores: 0, memory: 0)
 	  assert vm.save
   end
 
   test "should not create a machine with more memory than allowed" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:one), cores: 0, memory: 500)
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:user1), cores: 0, memory: 500)
 	  assert_not vm.save
   end
 
   test "should not create a machine with more CPU cores than allowed" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:one), cores: 500, memory: 0)
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:user1), cores: 500, memory: 0)
 	  assert_not vm.save
   end
 
