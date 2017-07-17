@@ -1,4 +1,4 @@
-class Admin::GlobalResourcesController < ApplicationController
+class Admin::GlobalResourcesController < Admin::BaseController
   before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_global_resource, only: [:show, :edit, :update, :destroy]

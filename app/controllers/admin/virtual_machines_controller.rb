@@ -1,8 +1,4 @@
-class Admin::VirtualMachinesController < ApplicationController
-  
-
-  #load_and_authorize_resource :user
-  #load_and_authorize_resource :through => :user
+class Admin::VirtualMachinesController < Admin::BaseController
 
   before_action :authenticate_user!
   load_and_authorize_resource

@@ -1,4 +1,4 @@
-class Admin::DisksController < ApplicationController
+class Admin::DisksController < Admin::BaseController
   before_action :authenticate_user!
   load_and_authorize_resource
   #load_and_authorize_resource :through => :virtual_machine
