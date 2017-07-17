@@ -5,9 +5,9 @@ class VirtualMachineTest < ActiveSupport::TestCase
   #   assert true
   # end
 
-  setup do
-    @user = User.create(:name => 'user', :email => 'asd@asd', :password => 'pass', :password_confirmation => 'pass')
-  end
+  #setup do
+  #  @user = User.new(:name => 'user', :email => 'asd@asd', :password => 'pass', :password_confirmation => 'pass')
+  #end
 
   test "should not create a machine without attributes" do
 	  vm = VirtualMachine.new()
@@ -15,18 +15,27 @@ class VirtualMachineTest < ActiveSupport::TestCase
   end
 
   test "should create a machine successfully" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: @user, cores: 0, memory: 0)
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:one), cores: 0, memory: 0)
 	  assert vm.save
   end
 
   test "should not create a machine with more memory than allowed" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: @user, cores: 0, memory: 500)
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:one), cores: 0, memory: 500)
 	  assert_not vm.save
   end
 
   test "should not create a machine with more CPU cores than allowed" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: @user, cores: 500, memory: 0)
+	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:one), cores: 500, memory: 0)
 	  assert_not vm.save
+  end
+
+  test "should destroy all disks when machine is destroyed" do
+    vm = virtual_machines(:vm1)
+    disk = disks(:disk1)
+    assert_difference('Disk.count', -1) do
+      vm.destroy
+    end
+
   end
 
 end

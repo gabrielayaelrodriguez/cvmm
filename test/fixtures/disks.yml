@@ -5,3 +5,9 @@
 
 #two:
 #  capacity: MyString
+
+disk1:
+ label: 'disk'
+ model: 'SSD'
+ capacity: 1
+ virtual_machine: :vm1

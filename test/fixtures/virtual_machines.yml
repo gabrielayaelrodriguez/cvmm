@@ -5,3 +5,10 @@
 
 #two:
 #  state: MyString
+vm1:
+ name: "machine 1"
+ state: "shut down"
+ os: "linux"
+ memory: 1
+ cores: 1
+ user: :one
