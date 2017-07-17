@@ -8,13 +8,29 @@ Rails.application.routes.draw do
   root 'home#index'
   
   #scope path: ":user_id", as: "user" do
-  resources :user do
+  #resources :user do
+  #  resources :dashboard, only: [:index]
+  #  resources :virtual_machines do
+  #    resources :disks
+  #  end
+  #end
+
+  #resource :global_resource, only: [:show, :edit, :update]
+
+
+  namespace 'user' do
     resources :dashboard, only: [:index]
     resources :virtual_machines do
       resources :disks
     end
   end
 
-  resource :global_resource, only: [:show, :edit, :update]
+  namespace 'admin' do
+    resources :dashboard, only: [:index]
+    resource :global_resource, only: [:show, :edit, :update]
+    resources :virtual_machines, only: [:index, :show, :destroy] do
+      resources :disks, only: [:show, :destroy]
+    end
+  end
 
 end

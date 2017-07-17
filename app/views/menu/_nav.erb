@@ -3,10 +3,16 @@
         
 		<ul>  
 		    <% if user_signed_in? %>
+
 		    	<li>
-					<%= link_to 'Dashboard', user_dashboard_index_path(current_user) %>
+		    	<% if current_user.admin? %>	
+					<%= link_to 'Dashboard', admin_dashboard_index_path %>
+				<% else %>
+					<%= link_to 'Dashboard', user_dashboard_index_path %>
+				<% end %>
 				</li>
-		    	<li>
+
+			    <li>
 					<%= link_to('Edit registration', edit_user_registration_path) %>
 				</li>
 				<li class="right" >

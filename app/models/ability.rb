@@ -6,18 +6,18 @@ class Ability
         alias_action :create, :read, :update, :destroy, to: :crud
 
         if user.admin?
-            can :read, User
-            can [:read, :destroy], VirtualMachine
-            #can :read, :all
-            can [:read, :update], GlobalResource
+            #can :read, User
+            #can [:read, :destroy], VirtualMachine
+            can :read, :all
+            can :update, GlobalResource
             #can :destroy, User
-            #can :destroy, VirtualMachine
+            can :destroy, VirtualMachine
             #cannot [:create, :update, :destroy], Disk
 
         else
-            can [:read, :update], User do |u|
-                u.id == user.id
-            end
+            #can [:read, :update], User do |u|
+            #    u.id == user.id
+            #end
             can :crud, VirtualMachine do |v|
                 v.user_id == user.id
             end

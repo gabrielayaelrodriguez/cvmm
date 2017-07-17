@@ -37,18 +37,13 @@
         <td><%= disk.model %></td>
         <td><%= disk.capacity %></td>
 
-        <td><%= link_to 'Show', user_virtual_machine_disk_path(@user, @virtual_machine, disk) %></td>
-        <td><%= link_to 'Edit', edit_user_virtual_machine_disk_path(@user, @virtual_machine, disk) %></td>
-        <td><%= link_to 'Destroy', [@user, disk.virtual_machine, disk],
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_virtual_machine_disk_path(@virtual_machine, disk) %></td>
+
       </tr>
     <% end %>
   </table>
 
 
-  <%= link_to 'ADD NEW DISK', new_user_virtual_machine_disk_path(@user, @virtual_machine) %>
-
 <br>
-<%= link_to 'Edit', edit_user_virtual_machine_path(@user, @virtual_machine) %> |
-<%= link_to 'Back', user_virtual_machines_path %>
+
+<%= link_to 'Back', admin_virtual_machines_path %>

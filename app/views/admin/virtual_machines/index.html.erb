@@ -16,14 +16,11 @@
       <tr>
         <td><%= virtual_machine.name %></td>
         <td><%= virtual_machine.state %></td>
-        <td><%= link_to 'Show', user_virtual_machine_path(@user, virtual_machine) %></td>
-        <td><%= link_to 'Edit', edit_user_virtual_machine_path(@user, virtual_machine) %></td>
-        <td><%= link_to 'Destroy', [virtual_machine.user, virtual_machine], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_virtual_machine_path(virtual_machine) %></td>
+        <td><%= link_to 'Destroy', admin_virtual_machine_path(virtual_machine), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Virtual Machine', new_user_virtual_machine_path %>

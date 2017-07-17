@@ -1,4 +1,4 @@
-class VirtualMachinesController < ApplicationController
+class User::VirtualMachinesController < ApplicationController
   
 
   #load_and_authorize_resource :user
@@ -6,52 +6,49 @@ class VirtualMachinesController < ApplicationController
   
   #load_and_authorize_resource :except => [:create], :through => :current_user
   before_action :authenticate_user!
-  #load_and_authorize_resource
-  before_action :findparent
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:new, :create]
+
+  before_action :find_parent
+  before_action :set_limits_create, only: [:new]
+
   before_action :set_virtual_machine, only: [:show, :edit, :update, :destroy]
+  before_action :set_limits_edit, only: [:edit]
 
   # GET /virtual_machines
   # GET /virtual_machines.json
   def index
-    authorize! :read, @user
-    if current_user.admin?
-      @virtual_machines = VirtualMachine.all
-    else 
-      @virtual_machines = @user.virtual_machines.all
-    end
+    @virtual_machines = current_user.virtual_machines.all
   end
 
   # GET /virtual_machines/1
   # GET /virtual_machines/1.json
   def show
-    authorize! :read, @virtual_machine
   end
 
   # GET /virtual_machines/new
   def new
-    authorize! :update, @user
     @virtual_machine = VirtualMachine.new
   end
 
   # GET /virtual_machines/1/edit
-  def edit
-    authorize! :update, @virtual_machine
-    
+  def edit 
   end
 
   # POST /virtual_machines
   # POST /virtual_machines.json
   def create
-    authorize! :update, @user
-    @virtual_machine = VirtualMachine.new(require_params)
+    @virtual_machine = VirtualMachine.new(virtual_machine_params)
     @virtual_machine.user=@user
     #@user.virtual_machines.new(require_params)
 
-    respond_to do |format|
+   respond_to do |format|
       if @virtual_machine.save
+        #redirect_to user_virtual_machines_path(@virtual_machine)
         format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully created.' }
         format.json { render :show, status: :created, location: @virtual_machine }
       else
+        #render :new
         format.html { render :new }
         format.json { render json: @virtual_machine.errors, status: :unprocessable_entity }
       end
@@ -61,9 +58,9 @@ class VirtualMachinesController < ApplicationController
   # PATCH/PUT /virtual_machines/1
   # PATCH/PUT /virtual_machines/1.json
   def update
-    authorize! :update, @virtual_machine
+    #authorize! :update, @virtual_machine
     respond_to do |format|
-      if @virtual_machine.update(require_params)
+      if @virtual_machine.update(virtual_machine_params)
         format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully updated.' }
         format.json { render :show, status: :ok, location: @virtual_machine }
       else
@@ -76,7 +73,7 @@ class VirtualMachinesController < ApplicationController
   # DELETE /virtual_machines/1
   # DELETE /virtual_machines/1.json
   def destroy
-    authorize! :destroy, @virtual_machine
+    #authorize! :destroy, @virtual_machine
     @virtual_machine.destroy
     respond_to do |format|
       format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully destroyed.' }
@@ -91,22 +88,30 @@ class VirtualMachinesController < ApplicationController
         @virtual_machine = VirtualMachine.find(params[:id])
       else
         @virtual_machine = @user.virtual_machines.find(params[:id])
-        @ram = @global_resource.freeRAM + @virtual_machine.memory
-        @cores = @global_resource.freeCPUCores + @virtual_machine.cores
+        #@ram = @global_resource.freeRAM + @virtual_machine.memory
+        #@cores = @global_resource.freeCPUCores + @virtual_machine.cores
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def require_params
+    def virtual_machine_params
       params.require(:virtual_machine).permit(:name, :state, :os, :memory, :cores)
     end
 
-    def findparent
-      @user = User.find(params[:user_id])
-      @global_resource = GlobalResource.first
-      @ram = @global_resource.freeRAM
-      @cores = @global_resource.freeCPUCores
-      
+    def find_parent
+      @user = current_user
+    end
+
+    def set_limits_create
+      global_resource = GlobalResource.first
+      @ram = global_resource.freeRAM
+      @cores = global_resource.freeCPUCores
+    end
+
+    def set_limits_edit
+      global_resource = GlobalResource.first
+      @ram = global_resource.freeRAM + @virtual_machine.memory
+      @cores = global_resource.freeCPUCores + @virtual_machine.cores
     end
 
 end

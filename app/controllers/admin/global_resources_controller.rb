@@ -1,4 +1,4 @@
-class GlobalResourcesController < ApplicationController
+class Admin::GlobalResourcesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_global_resource, only: [:show, :edit, :update, :destroy]
@@ -36,7 +36,7 @@ class GlobalResourcesController < ApplicationController
     #respond_to do |format|
 
       if @global_resource.update(global_resource_params)
-        redirect_to global_resource_path
+        redirect_to admin_global_resource_path
         #format.html { redirect_to global_resource_path, notice: 'Global resource was successfully updated.' }
         #format.json { render :show, status: :ok }
       else

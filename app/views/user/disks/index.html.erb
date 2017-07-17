@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Disks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Capacity</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disks.each do |disk| %>
+      <tr>
+        <td><%= disk.capacity %></td>
+        <td><%= disk.label %></td>
+        <td><%= link_to 'Show', disk %></td>
+        <td><%= link_to 'Edit', edit_disk_path(disk) %></td>
+        <td><%= link_to 'Destroy', disk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Disk', new_user_virtual_machine_disk_path(@user, @virtual_machine) %>
