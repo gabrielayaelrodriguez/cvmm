@@ -1,4 +1,4 @@
-class User::VirtualMachinesController < ApplicationController
+class User::VirtualMachinesController < User::BaseController
   
 
   #load_and_authorize_resource :user

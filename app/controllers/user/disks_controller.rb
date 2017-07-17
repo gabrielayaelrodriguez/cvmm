@@ -1,4 +1,4 @@
-class User::DisksController < ApplicationController
+class User::DisksController < User::BaseController
   before_action :authenticate_user!
   load_and_authorize_resource :virtual_machine
   #load_and_authorize_resource :virtual_machine, :through => :current_user
