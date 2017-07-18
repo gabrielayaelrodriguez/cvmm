@@ -68,3 +68,5 @@ gem 'binding_of_caller'
 gem 'simple_form'
 
 gem 'kaminari'
+
+gem 'ransack'

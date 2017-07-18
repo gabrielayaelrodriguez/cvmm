@@ -2,11 +2,12 @@ class Admin::VirtualMachinesController < Admin::BaseController
 
   before_action :authenticate_user!
   load_and_authorize_resource
+  before_action :set_search
   before_action :set_virtual_machine, only: [:show, :edit, :update, :destroy]
 
 
   def index
-    @virtual_machines = VirtualMachine.all.page(params[:page])
+    @virtual_machines = VirtualMachine.search(params[:q]).result.page(params[:page])
   end
 
   def show
@@ -27,5 +28,9 @@ class Admin::VirtualMachinesController < Admin::BaseController
     def set_virtual_machine
       @virtual_machine = VirtualMachine.find(params[:id])
     end
+
+  def set_search
+    @search=VirtualMachine.search(params[:q])
+  end
 
 end

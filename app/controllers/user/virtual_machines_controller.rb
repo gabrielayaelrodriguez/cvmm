@@ -9,6 +9,8 @@ class User::VirtualMachinesController < User::BaseController
   load_and_authorize_resource
   skip_authorize_resource :only => [:new, :create]
 
+  before_action :set_search
+
   before_action :find_parent
   before_action :set_limits_create, only: [:new]
 
@@ -18,7 +20,7 @@ class User::VirtualMachinesController < User::BaseController
   # GET /virtual_machines
   # GET /virtual_machines.json
   def index
-    @virtual_machines = current_user.virtual_machines.all.page(params[:page])
+    @virtual_machines = current_user.virtual_machines.search(params[:q]).result.page(params[:page])
   end
 
   # GET /virtual_machines/1
@@ -112,6 +114,10 @@ class User::VirtualMachinesController < User::BaseController
       global_resource = GlobalResource.first
       @ram = global_resource.freeRAM + @virtual_machine.memory
       @cores = global_resource.freeCPUCores + @virtual_machine.cores
+    end
+
+    def set_search
+      @search=VirtualMachine.search(params[:q])
     end
 
 end

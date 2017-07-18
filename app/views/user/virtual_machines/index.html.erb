@@ -2,6 +2,12 @@
 
 <h1>Virtual Machines</h1>
 
+<%= search_form_for @search, url: user_virtual_machines_path do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
+
 <table>
   <thead>
     <tr>
