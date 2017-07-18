@@ -6,7 +6,7 @@ class Admin::VirtualMachinesController < Admin::BaseController
 
 
   def index
-    @virtual_machines = VirtualMachine.all
+    @virtual_machines = VirtualMachine.all.page(params[:page])
   end
 
   def show

@@ -18,7 +18,7 @@ class User::VirtualMachinesController < User::BaseController
   # GET /virtual_machines
   # GET /virtual_machines.json
   def index
-    @virtual_machines = current_user.virtual_machines.all
+    @virtual_machines = current_user.virtual_machines.all.page(params[:page])
   end
 
   # GET /virtual_machines/1

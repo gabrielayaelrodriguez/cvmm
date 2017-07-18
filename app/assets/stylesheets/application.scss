@@ -18,6 +18,7 @@
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
+@import "materialize/extras/nouislider";
 
 body {
   display: flex;
