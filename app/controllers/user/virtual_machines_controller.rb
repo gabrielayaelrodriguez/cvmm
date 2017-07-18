@@ -45,7 +45,7 @@ class User::VirtualMachinesController < User::BaseController
    respond_to do |format|
       if @virtual_machine.save
         #redirect_to user_virtual_machines_path(@virtual_machine)
-        format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully created.' }
+        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: 'Virtual machine was successfully created.' }
         format.json { render :show, status: :created, location: @virtual_machine }
       else
         #render :new
@@ -61,7 +61,7 @@ class User::VirtualMachinesController < User::BaseController
     #authorize! :update, @virtual_machine
     respond_to do |format|
       if @virtual_machine.update(virtual_machine_params)
-        format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully updated.' }
+        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: 'Virtual machine was successfully updated.' }
         format.json { render :show, status: :ok, location: @virtual_machine }
       else
         format.html { render :edit }

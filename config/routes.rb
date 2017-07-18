@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   namespace 'user' do
     resources :dashboard, only: [:index]
     resources :virtual_machines do
-      resources :disks
+      resources :disks, except: :index
     end
   end
 
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
     resource :global_resource, only: [:show, :edit, :update]
     resources :virtual_machines, only: [:index, :show, :destroy] do
-      resources :disks, only: [:show, :destroy]
+      resources :disks, only: :show
     end
   end
 
