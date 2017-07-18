@@ -2,7 +2,7 @@ require 'test_helper'
 
 class User::DashboardControllerTest < ActionDispatch::IntegrationTest
 
-include Devise::Test::IntegrationHelpers
+  include Devise::Test::IntegrationHelpers
 
   test "should not get index if not logged in" do
     get user_dashboard_index_url

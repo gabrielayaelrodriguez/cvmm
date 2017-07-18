@@ -1,48 +1,29 @@
 require 'test_helper'
 
-class DisksControllerTest < ActionDispatch::IntegrationTest
+class Admin::DisksControllerTest < ActionDispatch::IntegrationTest
+  
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @disk = disks(:one)
+    @virtual_machine = virtual_machines(:vm1)
+    @disk = disks(:disk1)
   end
 
-  test "should get index" do
-    get disks_url
-    assert_response :success
+  test "should not show disk if not logged in" do
+    get admin_virtual_machine_disk_url(@virtual_machine, @disk)
+    assert_response :redirect
   end
 
-  test "should get new" do
-    get new_disk_url
-    assert_response :success
-  end
-
-  test "should create disk" do
-    assert_difference('Disk.count') do
-      post disks_url, params: { disk: { capacity: @disk.capacity, type: @disk.type } }
-    end
-
-    assert_redirected_to disk_url(Disk.last)
+  test "should not show disk if not admin" do
+    sign_in users(:user1)
+    get admin_virtual_machine_disk_url(@virtual_machine, @disk)
+    assert_response :redirect
   end
 
   test "should show disk" do
-    get disk_url(@disk)
+    sign_in users(:user2)
+    get admin_virtual_machine_disk_url(@virtual_machine, @disk)
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_disk_url(@disk)
-    assert_response :success
-  end
-
-  test "should update disk" do
-    patch disk_url(@disk), params: { disk: { capacity: @disk.capacity, type: @disk.type } }
-    assert_redirected_to disk_url(@disk)
-  end
-
-  test "should destroy disk" do
-    assert_difference('Disk.count', -1) do
-      delete disk_url(@disk)
-    end
-
-    assert_redirected_to disks_url
-  end
 end

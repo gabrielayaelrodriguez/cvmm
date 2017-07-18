@@ -1,48 +1,62 @@
 require 'test_helper'
 
-class GlobalResourcesControllerTest < ActionDispatch::IntegrationTest
+class Admin::GlobalResourcesControllerTest < ActionDispatch::IntegrationTest
+  
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @global_resource = global_resources(:one)
+    @global_resource = global_resources(:gr)
+  end
+
+  test "should not get index if not logged in" do
+    get admin_global_resource_url
+    assert_response :redirect
+  end
+
+  test "should not get index if not admin" do
+    sign_in users(:user1)
+    get admin_global_resource_url
+    assert_response :redirect
   end
 
   test "should get index" do
-    get global_resources_url
+    sign_in users(:user2)
+    get admin_global_resource_url
     assert_response :success
   end
 
-  test "should get new" do
-    get new_global_resource_url
-    assert_response :success
+  test "should not get edit if not logged in" do
+    get edit_admin_global_resource_url(@global_resource)
+    assert_response :redirect
   end
 
-  test "should create global_resource" do
-    assert_difference('GlobalResource.count') do
-      post global_resources_url, params: { global_resource: { totalCPUCores: @global_resource.totalCPUCores, totalDiskSpace: @global_resource.totalDiskSpace, totalRAM: @global_resource.totalRAM, totalUsableCPUCores: @global_resource.totalUsableCPUCores, totalUsableDiskSpace: @global_resource.totalUsableDiskSpace, totalUsableRAM: @global_resource.totalUsableRAM } }
-    end
-
-    assert_redirected_to global_resource_url(GlobalResource.last)
-  end
-
-  test "should show global_resource" do
-    get global_resource_url(@global_resource)
-    assert_response :success
+  test "should not get edit if not admin" do
+    sign_in users(:user1)
+    get edit_admin_global_resource_url(@global_resource)
+    assert_response :redirect
   end
 
   test "should get edit" do
-    get edit_global_resource_url(@global_resource)
+    sign_in users(:user2)
+    get edit_admin_global_resource_url(@global_resource)
     assert_response :success
   end
 
+  test "should not update global_resource if not logged in" do
+    patch admin_global_resource_url(@global_resource), params: { global_resource: { totalCPUCores: @global_resource.totalCPUCores, totalDiskSpace: @global_resource.totalDiskSpace, totalRAM: @global_resource.totalRAM } }
+    assert_redirected_to root_url
+  end
+
+  test "should not update global_resource if not admin" do
+    sign_in users(:user1)
+    patch admin_global_resource_url(@global_resource), params: { global_resource: { totalCPUCores: @global_resource.totalCPUCores, totalDiskSpace: @global_resource.totalDiskSpace, totalRAM: @global_resource.totalRAM } }
+    assert_redirected_to root_url
+  end
+
   test "should update global_resource" do
-    patch global_resource_url(@global_resource), params: { global_resource: { totalCPUCores: @global_resource.totalCPUCores, totalDiskSpace: @global_resource.totalDiskSpace, totalRAM: @global_resource.totalRAM, totalUsableCPUCores: @global_resource.totalUsableCPUCores, totalUsableDiskSpace: @global_resource.totalUsableDiskSpace, totalUsableRAM: @global_resource.totalUsableRAM } }
-    assert_redirected_to global_resource_url(@global_resource)
+    sign_in users(:user2)
+    patch admin_global_resource_url(@global_resource), params: { global_resource: { totalCPUCores: @global_resource.totalCPUCores, totalDiskSpace: @global_resource.totalDiskSpace, totalRAM: @global_resource.totalRAM } }
+    assert_redirected_to admin_global_resource_url
   end
 
-  test "should destroy global_resource" do
-    assert_difference('GlobalResource.count', -1) do
-      delete global_resource_url(@global_resource)
-    end
-
-    assert_redirected_to global_resources_url
-  end
 end

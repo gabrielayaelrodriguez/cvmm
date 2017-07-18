@@ -1,48 +1,71 @@
 require 'test_helper'
 
 class VirtualMachinesControllerTest < ActionDispatch::IntegrationTest
+  
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    @virtual_machine = virtual_machines(:one)
+    @virtual_machine = virtual_machines(:vm1)
+  end
+
+  test "should not get index if not logged in" do
+    get admin_virtual_machines_url
+    assert_response :redirect
+  end
+
+  test "should not get index if not admin" do
+    sign_in users(:user1)
+    get admin_virtual_machines_url
+    assert_response :redirect
   end
 
   test "should get index" do
-    get virtual_machines_url
+    sign_in users(:user2)
+    get admin_virtual_machines_url
     assert_response :success
   end
 
-  test "should get new" do
-    get new_virtual_machine_url
-    assert_response :success
+  test "should not show virtual_machine if not logged in" do
+    get admin_virtual_machine_url(@virtual_machine)
+    assert_response :redirect
   end
 
-  test "should create virtual_machine" do
-    assert_difference('VirtualMachine.count') do
-      post virtual_machines_url, params: { virtual_machine: { state: @virtual_machine.state } }
-    end
-
-    assert_redirected_to virtual_machine_url(VirtualMachine.last)
+  test "should not show virtual_machine if not admin" do
+    sign_in users(:user1)
+    get admin_virtual_machine_url(@virtual_machine)
+    assert_response :redirect
   end
 
   test "should show virtual_machine" do
-    get virtual_machine_url(@virtual_machine)
+    sign_in users(:user2)
+    get admin_virtual_machine_url(@virtual_machine)
     assert_response :success
   end
 
-  test "should get edit" do
-    get edit_virtual_machine_url(@virtual_machine)
-    assert_response :success
+  test "should not destroy virtual_machine if not logged in" do
+    assert_no_difference('VirtualMachine.count', -1) do
+      delete admin_virtual_machine_url(@virtual_machine)
+    end
+
+    assert_redirected_to root_url
   end
 
-  test "should update virtual_machine" do
-    patch virtual_machine_url(@virtual_machine), params: { virtual_machine: { state: @virtual_machine.state } }
-    assert_redirected_to virtual_machine_url(@virtual_machine)
+  test "should not destroy virtual_machine if not admin" do
+    sign_in users(:user1)
+    assert_no_difference('VirtualMachine.count', -1) do
+      delete admin_virtual_machine_url(@virtual_machine)
+    end
+
+    assert_redirected_to root_url
   end
 
   test "should destroy virtual_machine" do
+    sign_in users(:user2)
     assert_difference('VirtualMachine.count', -1) do
-      delete virtual_machine_url(@virtual_machine)
+      delete admin_virtual_machine_url(@virtual_machine)
     end
 
-    assert_redirected_to virtual_machines_url
+    assert_redirected_to admin_virtual_machines_url
   end
+
 end

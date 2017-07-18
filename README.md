@@ -1,43 +1,59 @@
-# README
+# Preparando el ambiente para el correcto funcionamiento de la aplicación (Linux):
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1. Clonar el trabajo mediante el siguiente comando:
 
-Things you may want to cover:
+```sh	
+	$ git clone https://github.com/gabrielayaelrodriguez/cvmm.git
+```
 
-* Ruby version
+2. Posicionarse en la carpeta creada. Luego, instalar las dependencias necesarias corriendo el siguiente comando:
 
-* System dependencies
+```sh
+	$ bundle install
+```
 
-* Configuration
+3. Correr las migraciones pendientes con el siguiente comando:
 
-* Database creation
+```sh	
+	$ rails db:migrate
+```
+4. Luego, poblar la base de datos:
 
-* Database initialization
+```sh
+	$ rails db:seed
+```
 
-* How to run the test suite
+5. Levantar el servidor:
 
-* Services (job queues, cache servers, search engines, etc.)
+```sh
+	$ rails s
+```
 
-* Deployment instructions
+# Ejecutando la aplicación
 
-* ...
+Se podrá ver la aplicación en http://localhost:3000/
 
+ó en https://rocky-stream-87322.herokuapp.com/
 
-1) página para instalar la gema devise y haciendo modelos
+# Corriendo los tests
 
- https://github.com/plataformatec/devise
+## Tests de Modelos
 
-2) admin booleano:
+Ejecutar en consola:
 
- https://github.com/plataformatec/devise/wiki/How-To:-Add-an-Admin-Role
+```sh
+	$ rails test test/models/disk_test.rb
+	$ rails test test/models/global_resource_test.rb
+	$ rails test test/models/virtual_machine_test.rb
+```
 
-3) haciendo links para login y logout 
+## Tests de Controladores
 
-https://github.com/plataformatec/devise/wiki/How-To:-Add-sign_in,-sign_out,-and-sign_up-links-to-your-layout-template
+Ejecutar en consola:
 
-4) haciendo dashboards: https://vsmedia.co.uk/single-table-inheritance-sti-devise/
-
-5) materialize:
-
-https://github.com/mkhairi/materialize-sass
+```sh
+	$ rails test test/controllers/admin/dashboard_controller_test.rb
+	$ rails test test/controllers/admin/disks_controller_test.rb
+	$ rails test test/controllers/admin/global_resources_controller_test.rb
+	$ rails test test/controllers/admin/virtual_machines_controller_test.rb
+```
