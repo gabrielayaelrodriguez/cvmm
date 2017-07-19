@@ -20,4 +20,11 @@ class ApplicationController < ActionController::Base
 	      format.html { redirect_to main_app.root_url, :alert => exception.message }
 	    end
 	  end
+
+	rescue_from ActionController::RoutingError do |exception|
+		respond_to do |format|
+	      format.json { head :forbidden }
+	      format.html { redirect_to main_app.root_url, :alert => exception.message + " has not been found." }
+	    end 
+	end
 end

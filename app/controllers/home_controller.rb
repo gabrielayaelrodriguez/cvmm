@@ -4,6 +4,10 @@ class HomeController < ApplicationController
 
   end
 
+  def catch_404
+  	  raise ActionController::RoutingError.new(params[:path])
+  	end
+
   private
 
   #def check_session
@@ -21,4 +25,6 @@ class HomeController < ApplicationController
 			end
 		end
   	end
+
+
 end

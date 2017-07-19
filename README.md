@@ -37,6 +37,12 @@ Se puede acceder a la aplicación mediante cualquiera de los siguientes links:
 * http://localhost:3000/
 * https://serene-badlands-23229.herokuapp.com/
 
+## Estado por defecto de la aplicación luego de correr el seed
+
+* El administrador es "admin@admin" con password "topsecret"
+* Los recursos globales del sistema están inicializados en 0, modificables por el administrador
+* Los usuarios deben registrarse para poder crear máquinas virtuales
+
 ## Corriendo los tests
 
 ### Tests de Modelos
