@@ -35,7 +35,7 @@
 Se puede acceder a la aplicación mediante cualquiera de los siguientes links:
 
 * http://localhost:3000/
-* https://clouldvmm.herokuapp.com/
+* https://serene-badlands-23229.herokuapp.com/
 
 ## Corriendo los tests
 
