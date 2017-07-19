@@ -70,3 +70,7 @@ gem 'simple_form'
 gem 'kaminari'
 
 gem 'ransack'
+
+group :production do
+  gem 'pg'
+end
