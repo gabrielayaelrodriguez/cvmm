@@ -1,12 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="center-align">
 
 <h1>Virtual Machines</h1>
 
-<%= search_form_for @search, url: user_virtual_machines_path do |f| %>
-  <%= f.label :name_cont %>
-  <%= f.search_field :name_cont %>
-  <%= f.submit %>
+</div>
+
+<div class="row">
+<%= search_form_for @search, url: user_virtual_machines_path, :class => "col s12" do |f| %>
+
+  <div class="row">
+
+    <div class="input-field col s4">
+      <%= f.label :name_cont %>
+      <%= f.search_field :name_cont %>
+    </div>
+    <div class="input-field col s4">
+      <%= f.submit "Search", :class => 'grey waves-effect waves-light btn' %>
+    </div>
+
+  </div>
 <% end %>
+
+</div>
 
 <table>
   <thead>
@@ -33,7 +47,14 @@
 
 <br>
 
+<div class="center-align">
+
 <%= paginate @virtual_machines %>
 
+<br>
 
 <%= link_to 'New Virtual Machine', new_user_virtual_machine_path, :class => 'waves-effect waves-light btn' %>
+
+</div>
+<br>
+<br>

@@ -1,17 +1,22 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Label:</strong>
-  <%= @disk.label %>
-</p>
-<p>
-  <strong>Model:</strong>
-  <%= @disk.model %>
-</p>
-<p>
-  <strong>Capacity:</strong>
-  <%= @disk.capacity %>
-</p>
+<div class="center-align">
+	<h2>Disk</h2>
+	<p>
+	  <strong>Label:</strong>
+	  <%= @disk.label %>
+	</p>
+	<p>
+	  <strong>Model:</strong>
+	  <%= @disk.model %>
+	</p>
+	<p>
+	  <strong>Capacity:</strong>
+	  <%= @disk.capacity %>
+	</p>
 
 
-<%= link_to 'Edit', edit_user_virtual_machine_disk_path(@virtual_machine, @disk) %> |
+	<%= link_to 'Edit', edit_user_virtual_machine_disk_path(@virtual_machine, @disk), :class => 'waves-effect waves-light btn' %>
+
+	<br><br>
+
+</div>
 <%= link_to 'Back', user_virtual_machine_path(@virtual_machine) %>

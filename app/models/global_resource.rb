@@ -1,6 +1,7 @@
 class GlobalResource < ApplicationRecord
 
-	#validates_numericality_of :totalRAM, :only_integer => true, :greater_than_or_equal_to => 0
+	validates :totalRAM, :totalDiskSpace, :totalCPUCores, presence: true
+
 	validate :inUseDiskSpace
 	validate :inUseRAM
 	validate :inUseCPUCores
@@ -8,29 +9,33 @@ class GlobalResource < ApplicationRecord
 
 	def inUseDiskSpace
 		usedSpace = Disk.all.sum(:capacity)
-		if self.totalDiskSpace < usedSpace
-			errors.add(:totalDiskSpace, "Total Disk Space must be more or equal than #{usedSpace}")
+		if !(self.totalDiskSpace.nil?)
+			if self.totalDiskSpace < usedSpace
+				errors.add(:totalDiskSpace, "Total Disk Space must be more or equal than #{usedSpace}")
+			end
 		end
 	end
 
 	def inUseRAM
 		usedRAM = VirtualMachine.all.sum(:memory)
-		if self.totalRAM < usedRAM
-			errors.add(:totalRAM, "Total RAM must be more or equal than #{usedRAM}")
+		if !(self.totalRAM.nil?)
+			if self.totalRAM < usedRAM
+				errors.add(:totalRAM, "Total RAM must be more or equal than #{usedRAM}")
+			end
 		end
 	end
 
 	def inUseCPUCores
 		usedCPU = VirtualMachine.all.sum(:cores)
-		if self.totalCPUCores < usedCPU
-			errors.add(:totalCPUCores, "Total CPU cores must be more or equal than #{usedCPU}")
+		if !(self.totalCPUCores.nil?)
+			if self.totalCPUCores < usedCPU
+				errors.add(:totalCPUCores, "Total CPU cores must be more or equal than #{usedCPU}")
+			end
 		end
 	end
 
 	def freeDiskSpace
 		self.totalDiskSpace - Disk.all.sum(:capacity)
-		
-		#self.totalUsableDiskSpace - inUse
 	end
 
 	def freeRAM

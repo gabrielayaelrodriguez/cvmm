@@ -1,37 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="center-align">
 
-<p>
-  <strong>Totalram:</strong>
-  <%= @global_resource.totalRAM %>
-</p>
+  <h3>Global Resource</h3>
 
-
-
-<p>
-  <strong>Totaldiskspace:</strong>
-  <%= @global_resource.totalDiskSpace %>
-</p>
+  <p>
+    <strong>Total RAM:</strong>
+    <%= @global_resource.totalRAM %>
+  </p>
 
 
+  <p>
+    <strong>Total Disk Space:</strong>
+    <%= @global_resource.totalDiskSpace %>
+  </p>
 
-<p>
-  <strong>Totalcpucores:</strong>
-  <%= @global_resource.totalCPUCores %>
-</p>
+  <p>
+    <strong>Total CPU Cores:</strong>
+    <%= @global_resource.totalCPUCores %>
+  </p>
 
----------------------------------------
+  ---------------------------------------
 
-<p>
-  <strong>FREE DISK SPACE:</strong>
-  <%= @global_resource.freeDiskSpace %>
-</p>
-<p>
-  <strong>FREE RAM:</strong>
-  <%= @global_resource.freeRAM %>
-</p>
-<p>
-  <strong>FREE CORES:</strong>
-  <%= @global_resource.freeCPUCores %>
-</p>
-<%= link_to 'Edit', edit_admin_global_resource_path %> |
+  <p>
+    <strong>FREE DISK SPACE:</strong>
+    <%= @global_resource.freeDiskSpace %>
+  </p>
+  <p>
+    <strong>FREE RAM:</strong>
+    <%= @global_resource.freeRAM %>
+  </p>
+  <p>
+    <strong>FREE CORES:</strong>
+    <%= @global_resource.freeCPUCores %>
+  </p>
+
+  <br>
+
+  <%= link_to 'Edit Global Resource', edit_admin_global_resource_path, :class => 'waves-effect waves-light btn' %>
+</div>
+
+<br><br>
+
 <%= link_to 'Back', admin_dashboard_index_path %>
+
+<br><br>

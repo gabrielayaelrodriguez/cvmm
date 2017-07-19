@@ -1,56 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class="center-align">
+  <h3>Virtual Machine</h3>
+  <p>
+    <strong>Name:</strong>
+    <%= @virtual_machine.name %>
+  </p>
+  <p>
+    <strong>State:</strong>
+    <%= @virtual_machine.state %>
+  </p>
+  <p>
+    <strong>OS:</strong>
+    <%= @virtual_machine.os %>
+  </p>
+  <p>
+    <strong>Memory:</strong>
+    <%= @virtual_machine.memory %>
+  </p>
+  <p>
+    <strong>Cores:</strong>
+    <%= @virtual_machine.cores %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @virtual_machine.name %>
-</p>
-<p>
-  <strong>State:</strong>
-  <%= @virtual_machine.state %>
-</p>
-<p>
-  <strong>OS:</strong>
-  <%= @virtual_machine.os %>
-</p>
-<p>
-  <strong>Memory:</strong>
-  <%= @virtual_machine.memory %>
-</p>
-<p>
-  <strong>Cores:</strong>
-  <%= @virtual_machine.cores %>
-</p>
+  <%= link_to 'Edit', edit_user_virtual_machine_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
 
-<h2>Disks</h2>
+  <h2>Disks</h2>
 
-<table class="table">
-  <tr>
-    <th>Label</th>
-    <th>Model</th>
-    <th>Capacity</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @virtual_machine.disks.each do |disk| %>
-      <tr>
-        <td><%= disk.label %></td>
-        <td><%= disk.model %></td>
-        <td><%= disk.capacity %></td>
+  <table class="table">
+    <tr>
+      <th>Label</th>
+      <th>Model</th>
+      <th>Capacity</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @virtual_machine.disks.each do |disk| %>
+        <tr>
+          <td><%= disk.label %></td>
+          <td><%= disk.model %></td>
+          <td><%= disk.capacity %></td>
 
-        <td><%= link_to 'Show', user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
-        <td><%= link_to 'Edit', edit_user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
-        <td><%= link_to 'Destroy', user_virtual_machine_disk_path(@virtual_machine, disk),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </table>
+          <td><%= link_to 'Show', user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
+          <td><%= link_to 'Edit', edit_user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
+          <td><%= link_to 'Destroy', user_virtual_machine_disk_path(@virtual_machine, disk),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
 
-<br>
-<%= link_to 'Edit', edit_user_virtual_machine_path(@virtual_machine) %> |
+  <br>
+
+
+  <br><br>
+
+    <%= link_to 'ADD NEW DISK', new_user_virtual_machine_disk_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
+
+</div>
+
+<br><br>
+
 <%= link_to 'Back', user_virtual_machines_path %>
 
 <br><br>
-  <%= link_to 'ADD NEW DISK', new_user_virtual_machine_disk_path(@virtual_machine) %>
 
 

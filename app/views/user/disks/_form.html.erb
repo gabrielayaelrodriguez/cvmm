@@ -1,7 +1,7 @@
 <%= simple_form_for [:user, @virtual_machine, @disk] do |f| %>
   <% if @disk.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@disk.errors.count, "error") %> prohibited this disk from being saved:</h2>
+      <h3><%= pluralize(@disk.errors.count, "error") %> prohibited this disk from being saved:</h3>
 
       <ul>
       <% @disk.errors.full_messages.each do |message| %>
@@ -11,10 +11,15 @@
     </div>
   <% end %>
 
-  <%= f.input :label %>
-  <%= f.input :model %>
-  <%= f.input :capacity, input_html: { min: '0', max: @space } %>
-
+  <div class="input-field col s6">
+    <%= f.input :label %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.input :model %>
+  </div>
+  <div class="input-field col s6">
+    <%= f.input :capacity, input_html: { min: '0', max: @space } %>
+  </div>
   <%= f.button :submit %>
 
 <% end %>

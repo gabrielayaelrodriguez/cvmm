@@ -1,13 +1,17 @@
-Admin Dashboard
-
-<br>
-<br>
 <br>
 
-<%= link_to 'All Virtual Machines ever', admin_virtual_machines_path %>
+<h1 class="center-align">Welcome!</h1>
 
-<br>
-<br>
-<br>
+<br><br>
 
-<%= link_to 'Resource Manager', admin_global_resource_path %>
+<div class="center-align">
+	<%= link_to admin_virtual_machines_path, class: "btn-large waves-effect waves-light" do %>
+	    <i class="material-icons">computer</i> Watch All Virtual Machines
+	<% end %>
+
+	<br><br><br><br>
+
+	<%= link_to admin_global_resource_path, class: "btn-large waves-effect waves-light" do %>
+	    <i class="material-icons">settings</i> Resource Manager
+	<% end %>
+</div>

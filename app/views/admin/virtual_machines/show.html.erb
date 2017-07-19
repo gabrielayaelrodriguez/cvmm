@@ -1,49 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="center-align">
+  <h3>Virtual Machine</h3>
+  <p>
+    <strong>Name:</strong>
+    <%= @virtual_machine.name %>
+  </p>
+  <p>
+    <strong>State:</strong>
+    <%= @virtual_machine.state %>
+  </p>
+  <p>
+    <strong>OS:</strong>
+    <%= @virtual_machine.os %>
+  </p>
+  <p>
+    <strong>Memory:</strong>
+    <%= @virtual_machine.memory %>
+  </p>
+  <p>
+    <strong>Cores:</strong>
+    <%= @virtual_machine.cores %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @virtual_machine.name %>
-</p>
-<p>
-  <strong>State:</strong>
-  <%= @virtual_machine.state %>
-</p>
-<p>
-  <strong>OS:</strong>
-  <%= @virtual_machine.os %>
-</p>
-<p>
-  <strong>Memory:</strong>
-  <%= @virtual_machine.memory %>
-</p>
-<p>
-  <strong>Cores:</strong>
-  <%= @virtual_machine.cores %>
-</p>
+  <h2>Disks</h2>
 
-<h2>Disks</h2>
+  <table class="table">
+    <tr>
+      <th>Label</th>
+      <th>Model</th>
+      <th>Capacity</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @virtual_machine.disks.each do |disk| %>
+        <tr>
+          <td><%= disk.label %></td>
+          <td><%= disk.model %></td>
+          <td><%= disk.capacity %></td>
 
-<table class="table">
-  <tr>
-    <th>Label</th>
-    <th>Model</th>
-    <th>Capacity</th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @virtual_machine.disks.each do |disk| %>
-      <tr>
-        <td><%= disk.label %></td>
-        <td><%= disk.model %></td>
-        <td><%= disk.capacity %></td>
+          <td><%= link_to 'Show', admin_virtual_machine_disk_path(@virtual_machine, disk) %></td>
 
-        <td><%= link_to 'Show', admin_virtual_machine_disk_path(@virtual_machine, disk) %></td>
-
-      </tr>
-    <% end %>
-  </table>
+        </tr>
+      <% end %>
+    </table>
 
 
-<br>
+  <br>
+</div>
 
 <%= link_to 'Back', admin_virtual_machines_path %>
+
+<br><br>

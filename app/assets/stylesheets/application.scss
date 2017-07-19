@@ -54,7 +54,11 @@ main {
 }
 
 .card-title {
-    color: #000;
+    color: #192038;
     font-size: 30px;
 }
 
+.input-field label:not(.label-icon).active {
+    left: 0.75rem;
+    transform: translateY(-170%);
+}
