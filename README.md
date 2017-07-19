@@ -32,11 +32,10 @@
 
 ## Visualizando la aplicación
 
-Colocar en el browser
+Se puede acceder a la aplicación mediante cualquiera de los siguientes links:
 
 * http://localhost:3000/
-ó 
-* https://rocky-stream-87322.herokuapp.com/
+* https://clouldvmm.herokuapp.com/
 
 ## Corriendo los tests
 
