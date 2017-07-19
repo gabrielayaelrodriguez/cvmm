@@ -7,7 +7,7 @@
 #  state: MyString
 vm1:
  name: "machine 1"
- state: "shut down"
+ state: "Shut Down"
  os: "linux"
  memory: 1
  cores: 1

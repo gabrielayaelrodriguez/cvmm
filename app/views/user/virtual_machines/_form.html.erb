@@ -13,9 +13,12 @@
   <div class="input-field col s6">
     <%= f.input :name %>
   </div>
+
+  <%= f.label :state %>
   <div class="input-field col s6">
-    <%= f.input :state %>
+    <%= f.select :state, options_for_select(['Shut Down', 'Sleep', 'Running'], :selected => @virtual_machine.state), {}, class: 'browser-default grey darken-4' %>
   </div>
+
   <div class="input-field col s6">
     <%= f.input :os %>
   </div>

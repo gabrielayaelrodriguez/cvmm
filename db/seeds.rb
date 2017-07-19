@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.create! :name => 'admin', :admin => true, :email => 'admin@admin', :password => 'topsecret', :password_confirmation => 'topsecret'
+User.create! :admin => true, :email => 'admin@admin', :password => 'topsecret', :password_confirmation => 'topsecret'
 
 GlobalResource.create! :totalRAM => 0,  :totalDiskSpace => 0, :totalCPUCores => 0

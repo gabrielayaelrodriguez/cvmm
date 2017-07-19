@@ -11,17 +11,17 @@ class VirtualMachineTest < ActiveSupport::TestCase
   end
 
   test "should create a machine successfully" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:user1), cores: 0, memory: 0)
+	  vm = VirtualMachine.new(name: 'myVM', state: 'Shut Down', os: 'linux', user: users(:user1), cores: 0, memory: 0)
 	  assert vm.save
   end
 
   test "should not create a machine with more memory than allowed" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:user1), cores: 0, memory: 500)
+	  vm = VirtualMachine.new(name: 'myVM', state: 'Shut Down', os: 'linux', user: users(:user1), cores: 0, memory: 500)
 	  assert_not vm.save
   end
 
   test "should not create a machine with more CPU cores than allowed" do
-	  vm = VirtualMachine.new(name: 'myVM', os: 'linux', user: users(:user1), cores: 500, memory: 0)
+	  vm = VirtualMachine.new(name: 'myVM', state: 'Shut Down', os: 'linux', user: users(:user1), cores: 500, memory: 0)
 	  assert_not vm.save
   end
 
