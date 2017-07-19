@@ -15,12 +15,35 @@
  */
 
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+
+// Colors
+// ==========================================================================
+
+$primary-color: color("indigo", "lighten-1") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: color("teal", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
+
+// Cards
+// ==========================================================================
+
+$card-padding: 24px !default;
+$card-bg-color: color("grey", "darken-2") !default;
+
+
 @import 'materialize';
 @import "materialize/extras/nouislider";
 
+html {
+    font-family: 'Raleway', sans-serif;
+  }
 body {
+  background-color: color("grey", "darken-4");
+  color: color("grey", "lighten-2");
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -29,3 +52,9 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.card-title {
+    color: #000;
+    font-size: 30px;
+}
+
