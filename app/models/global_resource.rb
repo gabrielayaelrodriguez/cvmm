@@ -8,41 +8,29 @@ class GlobalResource < ApplicationRecord
 
 
   def inUseDiskSpace
-    usedSpace = Disk.all.sum(:capacity)
-    if !(self.totalDiskSpace.nil?)
-      if self.totalDiskSpace < usedSpace
-        errors.add(:totalDiskSpace, "Total Disk Space must be more or equal than #{usedSpace}")
-      end
-    end
+    usedSpace = Disk.sum(:capacity)
+    errors.add(:totalDiskSpace, "Total Disk Space must be more or equal than #{usedSpace}") if totalDiskSpace && totalDiskSpace < usedSpace
   end
 
   def inUseRAM
-    usedRAM = VirtualMachine.all.sum(:memory)
-    if !(self.totalRAM.nil?)
-      if self.totalRAM < usedRAM
-        errors.add(:totalRAM, "Total RAM must be more or equal than #{usedRAM}")
-      end
-    end
+    usedRAM = VirtualMachine.sum(:memory)
+    errors.add(:totalRAM, "Total RAM must be more or equal than #{usedRAM}") if totalRAM && totalRAM < usedRAM
   end
 
   def inUseCPUCores
-    usedCPU = VirtualMachine.all.sum(:cores)
-    if !(self.totalCPUCores.nil?)
-      if self.totalCPUCores < usedCPU
-        errors.add(:totalCPUCores, "Total CPU cores must be more or equal than #{usedCPU}")
-      end
-    end
+    usedCPU = VirtualMachine.sum(:cores)
+    errors.add(:totalCPUCores, "Total CPU cores must be more or equal than #{usedCPU}") if totalCPUCores && totalCPUCores < usedCPU
   end
 
   def freeDiskSpace
-    self.totalDiskSpace - Disk.all.sum(:capacity)
+    self.totalDiskSpace - Disk.sum(:capacity)
   end
 
   def freeRAM
-    (self.totalRAM - VirtualMachine.all.sum(:memory))
+    (self.totalRAM - VirtualMachine.sum(:memory))
   end
 
   def freeCPUCores
-    self.totalCPUCores - VirtualMachine.all.sum(:cores)
+    self.totalCPUCores - VirtualMachine.sum(:cores)
   end
 end
