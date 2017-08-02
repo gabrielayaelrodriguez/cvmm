@@ -1,10 +1,5 @@
 class User::VirtualMachinesController < User::BaseController
   
-
-  #load_and_authorize_resource :user
-  #load_and_authorize_resource :through => :user
-  
-  #load_and_authorize_resource :except => [:create], :through => :current_user
   before_action :authenticate_user!
   load_and_authorize_resource
   skip_authorize_resource :only => [:new, :create]

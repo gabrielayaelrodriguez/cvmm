@@ -3,16 +3,13 @@ class Admin::GlobalResourcesController < Admin::BaseController
   load_and_authorize_resource
   before_action :set_global_resource, only: [:show, :edit, :update, :destroy]
 
-  # GET /global_resources
-  # GET /global_resources.json
+
   def index
-    #@global_resources = GlobalResource.all
   end
 
   # GET /global_resources/1
   # GET /global_resources/1.json
   def show
-    #authorize! :read, @global_resource
   end
 
   # GET /global_resources/new
@@ -21,7 +18,6 @@ class Admin::GlobalResourcesController < Admin::BaseController
 
   # GET /global_resources/1/edit
   def edit
-    #authorize! :update, @global_resource
   end
 
   # POST /global_resources
@@ -32,23 +28,13 @@ class Admin::GlobalResourcesController < Admin::BaseController
   # PATCH/PUT /global_resources/1
   # PATCH/PUT /global_resources/1.json
   def update
-    #authorize! :update, @global_resource
-    #respond_to do |format|
-
-      if @global_resource.update(global_resource_params)
-        redirect_to admin_global_resource_path
-        #format.html { redirect_to global_resource_path, notice: 'Global resource was successfully updated.' }
-        #format.json { render :show, status: :ok }
-      else
-        render :action => :edit
-        #format.html { redirect_to edit_global_resource_path }
-        #format.json { render json: @global_resource.errors, status: :unprocessable_entity }
-      end
-    #end
+    if @global_resource.update(global_resource_params)
+      redirect_to admin_global_resource_path
+    else
+      render :action => :edit
+    end
   end
 
-  # DELETE /global_resources/1
-  # DELETE /global_resources/1.json
   def destroy
   end
 
