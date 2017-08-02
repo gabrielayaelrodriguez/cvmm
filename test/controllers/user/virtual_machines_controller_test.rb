@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class VirtualMachinesControllerTest < ActionDispatch::IntegrationTest
+class User::VirtualMachinesControllerTest < ActionDispatch::IntegrationTest
 
   include Devise::Test::IntegrationHelpers
 

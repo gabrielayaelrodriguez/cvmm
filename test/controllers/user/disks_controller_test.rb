@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DisksControllerTest < ActionDispatch::IntegrationTest
+class User::DisksControllerTest < ActionDispatch::IntegrationTest
 
   include Devise::Test::IntegrationHelpers
 

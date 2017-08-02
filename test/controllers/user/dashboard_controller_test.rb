@@ -10,13 +10,13 @@ class User::DashboardControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index if logged in" do
-  	sign_in users(:user1)
+    sign_in users(:user1)
     get user_dashboard_index_url
     assert_response :success
   end
 
   test "should not get index if admin" do
-  	sign_in users(:user2)
+    sign_in users(:user2)
     get user_dashboard_index_url
     assert_response :redirect
   end
