@@ -53,7 +53,7 @@ es:
     global_resource:
      totalRAM: Memoria RAM total del Sistema
      totalDiskSpace: Espacio de Almacenamiento total del Sistema
-     totalCPUCores: Cores totales del Sistema
+     totalCPUCores: Núcleos totales del Sistema
   possible_states:
     shut_down: "Apagada"
     sleeping: "Suspendida"
@@ -72,14 +72,17 @@ es:
   disk_errors:
    capacity_less_or_equal_to: "La capacidad debe ser menor o igual a %{available}"
   global_resource_errors:
-   disk_space_more_or_equal_to: "El Espacio Total debe ser mayor o igual a %{usedSpace}"
-   ram_more_or_equal_to: "La Memoria Total debe ser mayor o igual a %{usedRAM}"
-   cores_more_or_equal_to: "Los Núcleos Totales deben ser mayores o iguales a %{usedCores}"
+   disk_space_greater_or_equal_to: "El Espacio Total debe ser mayor o igual a %{usedSpace}"
+   ram_greater_or_equal_to: "La Memoria Total debe ser mayor o igual a %{usedRAM}"
+   cores_greater_or_equal_to: "Los Núcleos Totales deben ser mayores o iguales a %{usedCores}"
   menu:
    nav:
     dashboard: Inicio
     edit_profile: Editar Perfil
     log_out: Cerrar sesión
+  footer:
+   footer:
+    cloud_virtual_machine_manager: Administrador de Máquinas Virtuales en la Nube
   user:
    dashboard:
     index:
@@ -88,7 +91,7 @@ es:
    virtual_machines:
     index:
      virtual_machines: Máquinas Virtuales
-     name_cont: Nombre Conteniendo
+     name_cont: "Nombre Conteniendo:"
      new_virtual_machine: Nueva Máquina Virtual
     new:
      new_virtual_machine: Nueva Máquina Virtual
@@ -133,7 +136,7 @@ es:
     index:
      welcome: Bienvenido!
      all_virtual_machines: Ver Máquinas Virtuales
-     resource_manager: Administrador de Recursos
+     resource_manager: Administrador de Recursos Globales
    virtual_machines:
     index:
      virtual_machines: Máquinas Virtuales
@@ -159,8 +162,8 @@ es:
      capacity: "Capacidad:"
    global_resources:
     show:
-     global_resource: Recurso Global
-     edit_global_resource: "Editar Recurso Global"
+     global_resource: Recursos Globales
+     edit_global_resource: "Editar Recursos Globales"
      free_disk_space: "Total de Espacio Libre en Disco:"
      free_ram: "Total de Memoria RAM Libre:"
      free_cores: "Total de Núcleos Libres:"
@@ -168,6 +171,6 @@ es:
      total_ram: "Memoria RAM Total del Sistema:"
      total_disk_space: "Espacio en Disco Total del Sistema:"
     edit:
-     edit_global_resource: Editando Recurso Global
+     edit_global_resource: Editando Recursos Globales
     update:
-     success: Recurso Global actualizado exitosamente
+     success: Recursos Globales actualizados exitosamente

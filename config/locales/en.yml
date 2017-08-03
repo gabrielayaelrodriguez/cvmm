@@ -29,27 +29,179 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
 en:
-  hello: "Hello world"
+  activerecord:
+   models:
+    virtual_machine: 
+     one: Virtual Machine
+     other: Virtual Machines
+    disk: 
+     one: Disk
+     other: Disks
+    global_resource: Global Resource
+   attributes:
+    virtual_machine:
+     name: Name
+     state: State
+     os: Operating System
+     memory: Memory
+     cores: Cores
+    disk:
+     label: Label
+     model: Model
+     capacity: Capacity
+    global_resource:
+     totalRAM: Total System RAM
+     totalDiskSpace: Total System Disk Space
+     totalCPUCores: Total System Cores
+  possible_states:
+    shut_down: "Shut Down"
+    sleeping: "Sleeping"
+    running: "Running"
+  back: « Back
+  show: Show
+  edit: Edit
+  destroy: Destroy
+  search: Search
+  name: Name
+  state: State
+  are_you_sure: "Are you sure?"
+  virtual_machine_errors:
+   cores_less_or_equal_to: "Cores must be less or equal to %{available}"
+   memory_less_or_equal_to: "Memory must be less or equal to %{available}"
+  disk_errors:
+   capacity_less_or_equal_to: "Capacity must be less or equal to %{available}"
+  global_resource_errors:
+   disk_space_greater_or_equal_to: "Total Disk Space must be greater or equal to %{usedSpace}"
+   ram_greater_or_equal_to: "Total Memory must be greater or equal to %{usedRAM}"
+   cores_greater_or_equal_to: "Total CPU Cores must be greater or equal to %{usedCores}"
   menu:
    nav:
     dashboard: Dashboard
     edit_profile: Edit Profile
-    log_out: Logout
+    log_out: Log Out
+  footer:
+   footer:
+    cloud_virtual_machine_manager: Cloud Virtual Machine Manager
   user:
    dashboard:
     index:
      welcome: Welcome!
      my_virtual_machines: My Virtual Machines
+   virtual_machines:
+    index:
+     virtual_machines: Virtual Machines
+     name_cont: "Name Containing:"
+     new_virtual_machine: New Virtual Machine
+    new:
+     new_virtual_machine: New Virtual Machine
+    create:
+     success: Virtual Machine successfully created
+    update:
+     success: Virtual Machine successfully updated
+    destroy:
+     success: Virtual Machine successfully destroyed
+    show:
+     virtual_machine: Virtual Machine
+     name: "Name:"
+     state: "State:"
+     os: "Operating System:"
+     memory: "Memory:"
+     cores: "Cores:"
+     disks: Disks
+     label: Label
+     model: Model
+     capacity: Capacity
+     add_new_disk: Add New Disk
+    edit:
+     edit_virtual_machine: Editing Virtual Machine
+   disks:
+    new:
+     new_disk: New Disk
+    create:
+     success: Disk successfully created
+    update:
+     success: Disk successfully updated
+    destroy:
+     success: Disk successfully destroyed
+    show:
+     disk: Disk
+     label: "Label:"
+     model: "Model:"
+     capacity: "Capacity:"
+    edit:
+     edit_disk: Editing Disk
   admin:
    dashboard:
     index:
      welcome: Welcome!
      all_virtual_machines: Watch All Virtual Machines
-     resource_manager: Resource Manager
+     resource_manager: Global Resource Manager
    virtual_machines:
     index:
      virtual_machines: Virtual Machines
-     search: Search
-     back: « Back
-     name_cont: Name Content
+     name_cont: "Name Containing:"
+    destroy:
+     success: Virtual Machine successfully destroyed
+    show:
+     virtual_machine: Virtual Machine
+     name: "Name:"
+     state: "State:"
+     os: "Operating System:"
+     memory: "Memory:"
+     cores: "Cores:"
+     disks: Disks
+     label: Label
+     model: Model
+     capacity: Capacity
+   disks:
+    show:
+     disk: Disk
+     label: "Label:"
+     model: "Model:"
+     capacity: "Capacity:"
+   global_resources:
+    show:
+     global_resource: Global Resources
+     edit_global_resource: Edit Global Resources
+     free_disk_space: "Total Free Disk Space:"
+     free_ram: "Total Free Memory:"
+     free_cores: "Total Free Cores:"
+     total_cpu: "Total System Cores:"
+     total_ram: "Total System Memory:"
+     total_disk_space: "Total System Disk Space:"
+    edit:
+     edit_global_resource: Editing Global Resources
+    update:
+     success: Global Resources successfully updated

@@ -19,6 +19,7 @@
   <div class="input-field col s6">
     <%= f.select :model, options_for_select(['SSD', 'HDD'], :selected => @disk.model), {}, class: 'browser-default grey darken-4' %>
   </div>
+  <br>
 
   <div class="input-field col s6">
     <%= f.input :capacity, input_html: { min: '0', max: @space } %>
