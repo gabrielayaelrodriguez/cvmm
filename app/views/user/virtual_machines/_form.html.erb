@@ -1,7 +1,7 @@
 <%= simple_form_for [:user, @virtual_machine] do |f| %>
   <% if @virtual_machine.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(@virtual_machine.errors.count, "error") %> prohibited this virtual_machine from being saved:</h3>
+      <h5><%= t('errors.template.header', :model=> @virtual_machine.model_name.human, :count=> @virtual_machine.errors.count) %></h5>
 
       <ul>
       <% @virtual_machine.errors.full_messages.each do |message| %>
@@ -16,7 +16,7 @@
 
   <%= f.label :state %>
   <div class="input-field col s6">
-    <%= f.select :state, options_for_select(['Shut Down', 'Sleep', 'Running'], :selected => @virtual_machine.state), {}, class: 'browser-default grey darken-4' %>
+    <%= f.select :state, options_for_select([[t('.shut_down'), 'Shut Down'], [t('.sleep'),'Sleep'], [t('.running'),'Running']], :selected => @virtual_machine.state), {}, class: 'browser-default grey darken-4' %>
   </div>
 
   <div class="input-field col s6">

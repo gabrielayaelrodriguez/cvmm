@@ -42,7 +42,7 @@ class User::VirtualMachinesController < User::BaseController
    respond_to do |format|
       if @virtual_machine.save
         #redirect_to user_virtual_machines_path(@virtual_machine)
-        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: 'Virtual machine was successfully created.' }
+        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: t('.success') }
         format.json { render :show, status: :created, location: @virtual_machine }
       else
         #render :new
@@ -58,7 +58,7 @@ class User::VirtualMachinesController < User::BaseController
     #authorize! :update, @virtual_machine
     respond_to do |format|
       if @virtual_machine.update(virtual_machine_params)
-        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: 'Virtual machine was successfully updated.' }
+        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: t('.success') }
         format.json { render :show, status: :ok, location: @virtual_machine }
       else
         format.html { render :edit }
@@ -73,7 +73,7 @@ class User::VirtualMachinesController < User::BaseController
     #authorize! :destroy, @virtual_machine
     @virtual_machine.destroy
     respond_to do |format|
-      format.html { redirect_to user_virtual_machines_path, notice: 'Virtual machine was successfully destroyed.' }
+      format.html { redirect_to user_virtual_machines_path, notice: t('.success') }
       format.json { head :no_content }
     end
   end

@@ -1,35 +1,35 @@
 <div class="center-align">
-  <h3>Virtual Machine</h3>
+  <h3><%= t('.virtual_machine')%></h3>
   <p>
-    <strong>Name:</strong>
+    <strong><%= t('.name')%></strong>
     <%= @virtual_machine.name %>
   </p>
   <p>
-    <strong>State:</strong>
+    <strong><%= t('.state')%></strong>
     <%= @virtual_machine.state %>
   </p>
   <p>
-    <strong>OS:</strong>
+    <strong><%= t('.os')%></strong>
     <%= @virtual_machine.os %>
   </p>
   <p>
-    <strong>Memory:</strong>
+    <strong><%= t('.memory')%></strong>
     <%= @virtual_machine.memory %>
   </p>
   <p>
-    <strong>Cores:</strong>
+    <strong><%= t('.cores')%></strong>
     <%= @virtual_machine.cores %>
   </p>
 
-  <%= link_to 'Edit', edit_user_virtual_machine_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
+  <%= link_to t('.edit'), edit_user_virtual_machine_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
 
-  <h2>Disks</h2>
+  <h2><%= t('.disks')%></h2>
 
   <table class="table">
     <tr>
-      <th>Label</th>
-      <th>Model</th>
-      <th>Capacity</th>
+      <th><%= t('.label')%></th>
+      <th><%= t('.model')%></th>
+      <th><%= t('.capacity')%></th>
       <th></th>
       <th></th>
     </tr>
@@ -43,7 +43,7 @@
           <td><%= link_to 'Edit', edit_user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
           <td><%= link_to 'Destroy', user_virtual_machine_disk_path(@virtual_machine, disk),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' } %></td>
+                  data: { confirm: t('.are_you_sure') } %></td>
         </tr>
       <% end %>
     </table>
@@ -53,13 +53,13 @@
 
   <br><br>
 
-    <%= link_to 'ADD NEW DISK', new_user_virtual_machine_disk_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
+    <%= link_to t('.add_new_disk'), new_user_virtual_machine_disk_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
 
 </div>
 
 <br><br>
 
-<%= link_to '« Back', user_virtual_machines_path %>
+<%= link_to t('.back'), user_virtual_machines_path %>
 
 <br><br>
 

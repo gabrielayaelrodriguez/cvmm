@@ -30,17 +30,77 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  hello: "Hello world"
   menu:
    nav:
     dashboard: Inicio
     edit_profile: Editar Perfil
     log_out: Cerrar sesión
+  activerecord:
+   models:
+    virtual_machine: 
+     one: Máquina Virtual
+     other: Máquinas Virtuales
+    disk: 
+     one: Disco
+     other: Discos
+    global_resource: Recurso Global
+   attributes:
+    virtual_machine:
+     name: Nombre
+     state: Estado
+     os: Sistema Operativo
+     memory: Memoria
+     cores: Núcleos
+    disk:
+     label: Etiqueta
+     model: Modelo
+     capacity: Capacidad
+    global_resource:
+     totalRAM: Memoria RAM total del Sistema
+     totalDiskSpace: Espacio de Almacenamiento total del Sistema
+     totalCPUCores: Cores totales del Sistema
   user:
    dashboard:
     index:
      welcome: Bienvenido!
      my_virtual_machines: Mis máquinas virtuales
+   virtual_machines:
+    index:
+     virtual_machines: Máquinas Virtuales
+     search: Buscar
+     name: Nombre
+     state: Estado
+     back: « Atrás
+     name_cont: Nombre Conteniendo
+     new_virtual_machine: Nueva Máquina Virtual
+     are_you_sure: "¿Está usted seguro?"
+    new:
+     new_virtual_machine: Nueva Máquina Virtual
+     shut_down: Apagada
+     back: « Atrás
+    create:
+     success: Máquina Virtual creada exitosamente
+    update:
+     success: Máquina Virtual actualizada exitosamente
+    destroy:
+     success: Máquina Virtual eliminada exitosamente
+    show:
+     virtual_machine: Máquina Virtual
+     name: "Nombre:"
+     state: "Estado:"
+     os: "Sistema Operativo:"
+     memory: "Memoria:"
+     cores: "Núcleos:"
+     edit: Editar
+     disks: Discos
+     label: Etiqueta
+     model: Modelo
+     capacity: Capacidad
+     add_new_disk: Agregar Nuevo Disco
+     back: « Atrás
+     are_you_sure: "¿Está usted seguro?"
+    edit:
+     edit_virtual_machine: Editando Máquina Virtual
   admin:
    dashboard:
     index:
@@ -54,4 +114,4 @@ es:
      name: Nombre
      state: Estado
      back: « Atrás
-     name_cont: Nombre Conteniendo
+     name_cont: "Nombre Conteniendo:"

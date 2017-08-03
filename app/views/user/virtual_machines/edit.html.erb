@@ -1,6 +1,6 @@
-<h1>Editing Virtual Machine</h1>
+<h1><%= t('.edit_virtual_machine')%></h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', user_virtual_machine_path(@virtual_machine) %> |
-<%= link_to '« Back', user_virtual_machines_path %>
+<%= link_to t('.back'), user_virtual_machines_path %>
