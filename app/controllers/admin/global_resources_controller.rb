@@ -28,21 +28,21 @@ class Admin::GlobalResourcesController < Admin::BaseController
   # PATCH/PUT /global_resources/1
   # PATCH/PUT /global_resources/1.json
   def update
-    #if @global_resource.update(global_resource_params)
-    #  flash[:notice] = 'Successfully checked in'
-    #  redirect_to admin_global_resource_path
-    #else
-    #  render :action => :edit
-    #end
-    respond_to do |format|
-      if @global_resource.update(global_resource_params)
-        format.html { redirect_to admin_global_resource_path, notice: t('.success') }
-        format.json { render :index, status: :ok, location: @global_resource }
-      else
-        format.html { render :edit }
-        format.json { render json: @global_resource.errors, status: :unprocessable_entity }
-      end
+    if @global_resource.update(global_resource_params)
+      flash[:notice] = t('.success')
+      redirect_to admin_global_resource_path
+    else
+      render :action => :edit
     end
+    #respond_to do |format|
+    #  if @global_resource.update(global_resource_params)
+    #    format.html { redirect_to admin_global_resource_path(@global_resource), notice: t('.success') }
+    #    format.json { render :show, status: :ok, location: @global_resource }
+    #  else
+    #    format.html { render :edit }
+    #    format.json { render json: @global_resource.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   def destroy
