@@ -18,7 +18,7 @@ class Admin::VirtualMachinesController < Admin::BaseController
   def destroy
     @virtual_machine.destroy
     respond_to do |format|
-      format.html { redirect_to admin_virtual_machines_path, notice: 'Virtual machine was successfully destroyed.' }
+      format.html { redirect_to admin_virtual_machines_path, notice: t('.success') }
       format.json { head :no_content }
     end
   end

@@ -1,33 +1,33 @@
 <div class="center-align">
-  <h3>Virtual Machine</h3>
+  <h3><%= t('.virtual_machine')%></h3>
   <p>
-    <strong>Name:</strong>
+    <strong><%= t('.name')%></strong>
     <%= @virtual_machine.name %>
   </p>
   <p>
-    <strong>State:</strong>
-    <%= @virtual_machine.state %>
+    <strong><%= t('.state')%></strong>
+    <%= I18n.t("possible_states.#{@virtual_machine.state}")%>
   </p>
   <p>
-    <strong>OS:</strong>
+    <strong><%= t('.os')%></strong>
     <%= @virtual_machine.os %>
   </p>
   <p>
-    <strong>Memory:</strong>
+    <strong><%= t('.memory')%></strong>
     <%= @virtual_machine.memory %>
   </p>
   <p>
-    <strong>Cores:</strong>
+    <strong><%= t('.cores')%></strong>
     <%= @virtual_machine.cores %>
   </p>
 
-  <h2>Disks</h2>
+  <h2><%= t('.disks')%></h2>
 
   <table class="table">
     <tr>
-      <th>Label</th>
-      <th>Model</th>
-      <th>Capacity</th>
+      <th><%= t('.label')%></th>
+      <th><%= t('.model')%></th>
+      <th><%= t('.capacity')%></th>
       <th></th>
       <th></th>
     </tr>
@@ -37,7 +37,7 @@
           <td><%= disk.model %></td>
           <td><%= disk.capacity %></td>
 
-          <td><%= link_to 'Show', admin_virtual_machine_disk_path(@virtual_machine, disk) %></td>
+          <td><%= link_to I18n.t('.show'), admin_virtual_machine_disk_path(@virtual_machine, disk) %></td>
 
         </tr>
       <% end %>
@@ -47,6 +47,6 @@
   <br>
 </div>
 
-<%= link_to '« Back', admin_virtual_machines_path %>
+<%= link_to I18n.t('.back'), admin_virtual_machines_path %>
 
 <br><br>

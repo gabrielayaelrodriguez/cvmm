@@ -1,45 +1,45 @@
 <div class="center-align">
 
-  <h3>Global Resource</h3>
+  <h3><%= t('.global_resource')%></h3>
 
   <p>
-    <strong>Total RAM:</strong>
+    <strong><%= t('.total_ram')%></strong>
     <%= @global_resource.totalRAM %>
   </p>
 
 
   <p>
-    <strong>Total Disk Space:</strong>
+    <strong><%= t('.total_disk_space')%></strong>
     <%= @global_resource.totalDiskSpace %>
   </p>
 
   <p>
-    <strong>Total CPU Cores:</strong>
+    <strong><%= t('.total_cpu')%></strong>
     <%= @global_resource.totalCPUCores %>
   </p>
 
   ---------------------------------------
 
   <p>
-    <strong>FREE DISK SPACE:</strong>
-    <%= @global_resource.freeDiskSpace %>
-  </p>
-  <p>
-    <strong>FREE RAM:</strong>
+    <strong><%= t('.free_ram')%></strong>
     <%= @global_resource.freeRAM %>
   </p>
   <p>
-    <strong>FREE CORES:</strong>
+    <strong><%= t('.free_disk_space')%></strong>
+    <%= @global_resource.freeDiskSpace %>
+  </p>
+  <p>
+    <strong><%= t('.free_cores')%></strong>
     <%= @global_resource.freeCPUCores %>
   </p>
 
   <br>
 
-  <%= link_to 'Edit Global Resource', edit_admin_global_resource_path, :class => 'waves-effect waves-light btn' %>
+  <%= link_to t('.edit_global_resource'), edit_admin_global_resource_path, :class => 'waves-effect waves-light btn' %>
 </div>
 
 <br><br>
 
-<%= link_to '« Back', admin_dashboard_index_path %>
+<%= link_to I18n.t('.back'), admin_dashboard_index_path %>
 
 <br><br>

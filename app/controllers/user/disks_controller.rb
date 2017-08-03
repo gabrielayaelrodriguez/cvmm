@@ -28,7 +28,7 @@ class User::DisksController < User::BaseController
     @disk.virtual_machine=@virtual_machine
     respond_to do |format|
       if @disk.save
-        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: 'Disk was successfully created.' }
+        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: t('.success') }
         format.json { render :show, status: :created, location: @disk }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class User::DisksController < User::BaseController
     authorize! :update, @virtual_machine
     respond_to do |format|
       if @disk.update(disk_params)
-        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: 'Disk was successfully updated.' }
+        format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: t('.success') }
         format.json { render :show, status: :ok, location: @disk }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class User::DisksController < User::BaseController
     authorize! :destroy, @virtual_machine
     @disk.destroy
     respond_to do |format|
-      format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: 'Disk was successfully destroyed.' }
+      format.html { redirect_to user_virtual_machine_path(@virtual_machine), notice: t('.success') }
       format.json { head :no_content }
     end
   end

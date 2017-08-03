@@ -69,6 +69,12 @@ es:
   virtual_machine_errors:
    cores_less_or_equal_to: "La cantidad de núcleos debe ser menor o igual a %{available}"
    memory_less_or_equal_to: "La memoria debe ser menor o igual a %{available}"
+  disk_errors:
+   capacity_less_or_equal_to: "La capacidad debe ser menor o igual a %{available}"
+  global_resource_errors:
+   disk_space_more_or_equal_to: "El Espacio Total debe ser mayor o igual a %{usedSpace}"
+   ram_more_or_equal_to: "La Memoria Total debe ser mayor o igual a %{usedRAM}"
+   cores_more_or_equal_to: "Los Núcleos Totales deben ser mayores o iguales a %{usedCores}"
   menu:
    nav:
     dashboard: Inicio
@@ -109,8 +115,17 @@ es:
    disks:
     new:
      new_disk: "Nuevo Disco"
+    create:
+     success: Disco creado exitosamente
+    update:
+     success: Disco actualizado exitosamente
+    destroy:
+     success: Disco eliminado exitosamente
     show:
      disk: Disco
+     label: "Etiqueta:"
+     model: "Modelo:"
+     capacity: "Capacidad:"
     edit:
      edit_disk: Editando Disco
   admin:
@@ -123,3 +138,36 @@ es:
     index:
      virtual_machines: Máquinas Virtuales
      name_cont: "Nombre Conteniendo:"
+    destroy:
+     success: Máquina Virtual eliminada exitosamente
+    show:
+     virtual_machine: Máquina Virtual
+     name: "Nombre:"
+     state: "Estado:"
+     os: "Sistema Operativo:"
+     memory: "Memoria:"
+     cores: "Núcleos:"
+     disks: Discos
+     label: Etiqueta
+     model: Modelo
+     capacity: Capacidad
+   disks:
+    show:
+     disk: Disco
+     label: "Etiqueta:"
+     model: "Modelo:"
+     capacity: "Capacidad:"
+   global_resources:
+    show:
+     global_resource: Recurso Global
+     edit_global_resource: "Editar Recurso Global"
+     free_disk_space: "Total de Espacio Libre en Disco:"
+     free_ram: "Total de Memoria RAM Libre:"
+     free_cores: "Total de Núcleos Libres:"
+     total_cpu: "Núcleos Totales del Sistema:"
+     total_ram: "Memoria RAM Total del Sistema:"
+     total_disk_space: "Espacio en Disco Total del Sistema:"
+    edit:
+     edit_global_resource: Editando Recurso Global
+    update:
+     success: Recurso Global actualizado exitosamente

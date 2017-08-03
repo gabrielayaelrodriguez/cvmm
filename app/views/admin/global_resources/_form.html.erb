@@ -1,7 +1,7 @@
 <%= simple_form_for @global_resource , :url => admin_global_resource_path do |f| %>
   <% if @global_resource.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(@global_resource.errors.count, "error") %> prohibited this global_resource from being saved:</h3>
+      <h5><%= t('errors.template.header', :model=> @global_resource.model_name.human, :count=> @global_resource.errors.count) %></h5>
 
       <ul>
       <% @global_resource.errors.full_messages.each do |message| %>

@@ -9,17 +9,17 @@ class GlobalResource < ApplicationRecord
 
   def inUseDiskSpace
     usedSpace = Disk.sum(:capacity)
-    errors.add(:totalDiskSpace, "Total Disk Space must be more or equal than #{usedSpace}") if totalDiskSpace && totalDiskSpace < usedSpace
+    errors.add(:totalDiskSpace, I18n.t("global_resource_errors.disk_space_more_or_equal_to", :usedSpace=> usedSpace)) if totalDiskSpace && totalDiskSpace < usedSpace
   end
 
   def inUseRAM
     usedRAM = VirtualMachine.sum(:memory)
-    errors.add(:totalRAM, "Total RAM must be more or equal than #{usedRAM}") if totalRAM && totalRAM < usedRAM
+    errors.add(:totalRAM, I18n.t("global_resource_errors.ram_more_or_equal_to", :usedRAM=> usedRAM)) if totalRAM && totalRAM < usedRAM
   end
 
   def inUseCPUCores
-    usedCPU = VirtualMachine.sum(:cores)
-    errors.add(:totalCPUCores, "Total CPU cores must be more or equal than #{usedCPU}") if totalCPUCores && totalCPUCores < usedCPU
+    usedCores = VirtualMachine.sum(:cores)
+    errors.add(:totalCPUCores, I18n.t("global_resource_errors.cores_more_or_equal_to", :usedCores=> usedCores))if totalCPUCores && totalCPUCores < usedCores
   end
 
   def freeDiskSpace

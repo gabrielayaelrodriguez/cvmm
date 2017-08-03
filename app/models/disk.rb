@@ -10,6 +10,6 @@ class Disk < ApplicationRecord
   def check_space
     available = GlobalResource.first.freeDiskSpace
     if Disk.exists?(id)then available=available+Disk.find(id).capacity end
-    errors.add(:capacity, "Capacity must be less or equal than #{available}") if capacity && capacity > available
+    errors.add(:capacity, I18n.t("disk_errors.capacity_less_or_equal_to", :available=> available)) if capacity && capacity > available
   end
 end
