@@ -30,11 +30,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
-  menu:
-   nav:
-    dashboard: Inicio
-    edit_profile: Editar Perfil
-    log_out: Cerrar sesión
   activerecord:
    models:
     virtual_machine: 
@@ -59,6 +54,26 @@ es:
      totalRAM: Memoria RAM total del Sistema
      totalDiskSpace: Espacio de Almacenamiento total del Sistema
      totalCPUCores: Cores totales del Sistema
+  possible_states:
+    shut_down: "Apagada"
+    sleeping: "Suspendida"
+    running: "Corriendo"
+  back: « Atrás
+  show: Ver
+  edit: Editar
+  destroy: Borrar
+  search: Buscar
+  name: Nombre
+  state: Estado
+  are_you_sure: "¿Está usted seguro?"
+  virtual_machine_errors:
+   cores_less_or_equal_to: "La cantidad de núcleos debe ser menor o igual a %{available}"
+   memory_less_or_equal_to: "La memoria debe ser menor o igual a %{available}"
+  menu:
+   nav:
+    dashboard: Inicio
+    edit_profile: Editar Perfil
+    log_out: Cerrar sesión
   user:
    dashboard:
     index:
@@ -67,17 +82,10 @@ es:
    virtual_machines:
     index:
      virtual_machines: Máquinas Virtuales
-     search: Buscar
-     name: Nombre
-     state: Estado
-     back: « Atrás
      name_cont: Nombre Conteniendo
      new_virtual_machine: Nueva Máquina Virtual
-     are_you_sure: "¿Está usted seguro?"
     new:
      new_virtual_machine: Nueva Máquina Virtual
-     shut_down: Apagada
-     back: « Atrás
     create:
      success: Máquina Virtual creada exitosamente
     update:
@@ -91,16 +99,20 @@ es:
      os: "Sistema Operativo:"
      memory: "Memoria:"
      cores: "Núcleos:"
-     edit: Editar
      disks: Discos
      label: Etiqueta
      model: Modelo
      capacity: Capacidad
      add_new_disk: Agregar Nuevo Disco
-     back: « Atrás
-     are_you_sure: "¿Está usted seguro?"
     edit:
      edit_virtual_machine: Editando Máquina Virtual
+   disks:
+    new:
+     new_disk: "Nuevo Disco"
+    show:
+     disk: Disco
+    edit:
+     edit_disk: Editando Disco
   admin:
    dashboard:
     index:
@@ -110,8 +122,4 @@ es:
    virtual_machines:
     index:
      virtual_machines: Máquinas Virtuales
-     search: Buscar
-     name: Nombre
-     state: Estado
-     back: « Atrás
      name_cont: "Nombre Conteniendo:"

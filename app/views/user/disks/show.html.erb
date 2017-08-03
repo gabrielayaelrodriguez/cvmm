@@ -1,5 +1,5 @@
 <div class="center-align">
-  <h2>Disk</h2>
+  <h2><%= t('.disk')%></h2>
   <p>
     <strong>Label:</strong>
     <%= @disk.label %>
@@ -14,9 +14,9 @@
   </p>
 
 
-  <%= link_to 'Edit', edit_user_virtual_machine_disk_path(@virtual_machine, @disk), :class => 'waves-effect waves-light btn' %>
+  <%= link_to I18n.t('.edit'), edit_user_virtual_machine_disk_path(@virtual_machine, @disk), :class => 'waves-effect waves-light btn' %>
 
   <br><br>
 
 </div>
-<%= link_to '« Back', user_virtual_machine_path(@virtual_machine) %>
+<%= link_to I18n.t('.back'), user_virtual_machine_path(@virtual_machine) %>

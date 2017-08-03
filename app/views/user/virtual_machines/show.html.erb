@@ -6,7 +6,7 @@
   </p>
   <p>
     <strong><%= t('.state')%></strong>
-    <%= @virtual_machine.state %>
+    <%= I18n.t("possible_states.#{@virtual_machine.state}")%>
   </p>
   <p>
     <strong><%= t('.os')%></strong>
@@ -21,7 +21,7 @@
     <%= @virtual_machine.cores %>
   </p>
 
-  <%= link_to t('.edit'), edit_user_virtual_machine_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
+  <%= link_to I18n.t('.edit'), edit_user_virtual_machine_path(@virtual_machine), :class => 'waves-effect waves-light btn' %>
 
   <h2><%= t('.disks')%></h2>
 
@@ -39,11 +39,11 @@
           <td><%= disk.model %></td>
           <td><%= disk.capacity %></td>
 
-          <td><%= link_to 'Show', user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
-          <td><%= link_to 'Edit', edit_user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
-          <td><%= link_to 'Destroy', user_virtual_machine_disk_path(@virtual_machine, disk),
+          <td><%= link_to I18n.t('.show'), user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
+          <td><%= link_to I18n.t('.edit'), edit_user_virtual_machine_disk_path(@virtual_machine, disk) %></td>
+          <td><%= link_to I18n.t('.destroy'), user_virtual_machine_disk_path(@virtual_machine, disk),
                   method: :delete,
-                  data: { confirm: t('.are_you_sure') } %></td>
+                  data: { confirm: I18n.t('.are_you_sure') } %></td>
         </tr>
       <% end %>
     </table>
@@ -59,7 +59,7 @@
 
 <br><br>
 
-<%= link_to t('.back'), user_virtual_machines_path %>
+<%= link_to I18n.t('.back'), user_virtual_machines_path %>
 
 <br><br>
 

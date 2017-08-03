@@ -16,8 +16,10 @@
 
   <%= f.label :state %>
   <div class="input-field col s6">
-    <%= f.select :state, options_for_select([[t('.shut_down'), 'Shut Down'], [t('.sleep'),'Sleep'], [t('.running'),'Running']], :selected => @virtual_machine.state), {}, class: 'browser-default grey darken-4' %>
+    <%= f.select :state, options_for_select(VirtualMachine::POSSIBLE_STATES.map { |s| [I18n.t("possible_states.#{s}"), s] }, :selected => @virtual_machine.state), {}, class: 'browser-default grey darken-4' %>
   </div>
+
+
 
   <div class="input-field col s6">
     <%= f.input :os %>

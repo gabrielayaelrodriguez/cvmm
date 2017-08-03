@@ -1,7 +1,7 @@
 <%= simple_form_for [:user, @virtual_machine, @disk] do |f| %>
   <% if @disk.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(@disk.errors.count, "error") %> prohibited this disk from being saved:</h3>
+      <h5><%= t('errors.template.header', :model=> @disk.model_name.human, :count=> @disk.errors.count) %></h5>
 
       <ul>
       <% @disk.errors.full_messages.each do |message| %>

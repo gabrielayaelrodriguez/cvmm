@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', user_virtual_machine_path(@virtual_machine) %> |
-<%= link_to t('.back'), user_virtual_machines_path %>
+<%= link_to I18n.t('.show'), user_virtual_machine_path(@virtual_machine) %> |
+<%= link_to I18n.t('.back'), user_virtual_machines_path %>
