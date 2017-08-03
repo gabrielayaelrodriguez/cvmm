@@ -29,27 +29,29 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+es:
   hello: "Hello world"
   menu:
    nav:
-    dashboard: Dashboard
-    edit_profile: Edit Profile
-    log_out: Logout
+    dashboard: Inicio
+    edit_profile: Editar Perfil
+    log_out: Cerrar sesión
   user:
    dashboard:
     index:
-     welcome: Welcome!
-     my_virtual_machines: My Virtual Machines
+     welcome: Bienvenido!
+     my_virtual_machines: Mis máquinas virtuales
   admin:
    dashboard:
     index:
-     welcome: Welcome!
-     all_virtual_machines: Watch All Virtual Machines
-     resource_manager: Resource Manager
+     welcome: Bienvenido!
+     all_virtual_machines: Ver Máquinas Virtuales
+     resource_manager: Administrador de Recursos
    virtual_machines:
     index:
-     virtual_machines: Virtual Machines
-     search: Search
-     back: « Back
-     name_cont: Name Content
+     virtual_machines: Máquinas Virtuales
+     search: Buscar
+     name: Nombre
+     state: Estado
+     back: « Atrás
+     name_cont: Nombre Conteniendo

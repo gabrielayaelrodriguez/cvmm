@@ -6,17 +6,17 @@
 
 		    	<li>
 		    	<% if current_user.admin? %>	
-					<%= link_to 'Dashboard', admin_dashboard_index_path %>
+					<%= link_to t(".dashboard"), admin_dashboard_index_path %>
 				<% else %>
-					<%= link_to 'Dashboard', user_dashboard_index_path %>
+					<%= link_to t(".dashboard"), user_dashboard_index_path %>
 				<% end %>
 				</li>
 
 			    <li>
-					<%= link_to('Edit registration', edit_user_registration_path) %>
+					<%= link_to(t(".edit_profile"), edit_user_registration_path) %>
 				</li>
 				<li class="right" >
-					<%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+					<%= link_to(t(".log_out"), destroy_user_session_path, method: :delete) %>        
 				</li>
 				
 			<% else %>

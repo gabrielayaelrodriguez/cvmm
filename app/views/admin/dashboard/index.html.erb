@@ -1,17 +1,17 @@
 <br>
 
-<h1 class="center-align">Welcome!</h1>
+<h1 class="center-align"><%= t('.welcome') %></h1>
 
 <br><br>
 
 <div class="center-align">
   <%= link_to admin_virtual_machines_path, class: "btn-large waves-effect waves-light" do %>
-      <i class="material-icons">computer</i> Watch All Virtual Machines
+      <i class="material-icons">computer</i> <%= t('.all_virtual_machines') %>
   <% end %>
 
   <br><br><br><br>
 
   <%= link_to admin_global_resource_path, class: "btn-large waves-effect waves-light" do %>
-      <i class="material-icons">settings</i> Resource Manager
+      <i class="material-icons">settings</i> <%= t('.resource_manager') %>
   <% end %>
 </div>

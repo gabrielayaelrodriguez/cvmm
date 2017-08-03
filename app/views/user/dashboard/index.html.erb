@@ -1,11 +1,11 @@
 <br>
 
-<h1 class="center-align">Welcome!</h1>
+<h1 class="center-align"><%= t('.welcome') %></h1>
 
 <br><br><br>
 
 <div class="center-align">
   <%= link_to user_virtual_machines_path, class: "btn-large waves-effect waves-light" do %>
-      <i class="material-icons">computer</i> My Virtual Machines
+      <i class="material-icons">computer</i> <%= t('.my_virtual_machines') %>
   <% end %>
 </div>

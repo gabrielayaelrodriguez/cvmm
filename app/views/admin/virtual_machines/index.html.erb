@@ -1,18 +1,18 @@
 <div class="center-align">
 
-<h1>Virtual Machines</h1>
+<h1><%= t('.virtual_machines') %></h1>
 
 </div>
 <div class="row">
 <%= search_form_for @search, url: admin_virtual_machines_path do |f| %>
     <div class="row">
 
-    <div class="input-field col s4">
-      <%= f.label :name_cont %>
+    <div class="field col s4">
+      <%= f.label t('.name_cont') %>
       <%= f.search_field :name_cont %>
     </div>
     <div class="input-field col s4">
-      <%= f.submit "Search", :class => 'grey waves-effect waves-light btn' %>
+      <%= f.submit t('.search'), :class => 'grey waves-effect waves-light btn' %>
     </div>
 
   </div>
@@ -22,8 +22,8 @@
 <table>
   <thead>
     <tr>
-      <th><%= sort_link(@search, :name, 'Name', default_order: :desc) %></th>
-      <th><%= sort_link(@search, :state, 'State', default_order: :desc) %></th>
+      <th><%= sort_link(@search, :name, t('.name'), default_order: :desc) %></th>
+      <th><%= sort_link(@search, :state, t('.state'), default_order: :desc) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -50,6 +50,6 @@
 
 <br><br>
 
-<%= link_to '« Back', admin_dashboard_index_path %>
+<%= link_to t('.back'), admin_dashboard_index_path %>
 
 <br><br>
