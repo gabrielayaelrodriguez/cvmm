@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :virtual_machines, dependent: :destroy
 
+  after_create :queue_resources_email
+
   def self.from_omniauth(access_token)
       data = access_token.info
       user = User.where(email: data['email']).first
@@ -19,5 +21,9 @@ class User < ApplicationRecord
            )
        end
       user
+  end
+
+  def queue_resources_email
+    UserMailer.welcome_email(self).deliver_now
   end
 end
