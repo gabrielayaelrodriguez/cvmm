@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   #resources :global_resources
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks'  }
+  #devise_for :users, path: "auth", :controllers => {  omniauth_callbacks: 'omniauth_callbacks'  }
 
   root 'home#index'
   
