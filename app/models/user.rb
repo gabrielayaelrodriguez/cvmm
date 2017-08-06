@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   has_many :virtual_machines, dependent: :destroy
 
-  after_create :queue_resources_email
+  #after_commit :send_report, on: :create
 
   def self.from_omniauth(access_token)
       data = access_token.info
@@ -23,7 +23,11 @@ class User < ApplicationRecord
       user
   end
 
-  def queue_resources_email
-    UserMailer.welcome_email(self).deliver_now
+  def self.send_report
+    #puts "ola"
+    UserMailer.welcome_email.deliver_now
+    #SendEmailsJob.perform_later
+    #HardWorker.perform_async id
+    #UserMailer.welcome_email(self).deliver_now
   end
 end

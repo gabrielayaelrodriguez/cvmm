@@ -1,0 +1,19 @@
+current directory: /home/gabi/cloudvmm/cvmm/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+/home/gabi/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20170805-6390-lpot48.rb extconf.rb
+creating Makefile
+
+current directory: /home/gabi/cloudvmm/cvmm/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/gabi/cloudvmm/cvmm/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling threads.c
+compiling context.c
+compiling breakpoint.c
+compiling byebug.c
+compiling locker.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/gabi/cloudvmm/cvmm/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20170805-6390-w2jdr8/byebug

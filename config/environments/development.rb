@@ -62,6 +62,8 @@ Rails.application.configure do
   #   arguments: '-i'
   # }
 
+  config.active_job.queue_adapter = :sidekiq
+
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
@@ -71,8 +73,8 @@ Rails.application.configure do
                     :address        => "smtp.gmail.com",
                     :port           => 587,
                     :domain         => "gmail.com",
-                    :user_name      => ENV['GMAIL_USERNAME'],
-                    :password       => ENV['GMAIL_PASSWORD'],
+                    :user_name      => ENV['gmail_username'],
+                    :password       => ENV['gmail_pass'],
                     :authentication => :plain,
                     :openssl_verify_mode  => 'none'
   } 

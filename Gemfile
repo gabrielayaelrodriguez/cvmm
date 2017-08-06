@@ -82,3 +82,11 @@ gem 'devise-i18n'
 gem 'dynamic_form'
 
 gem 'omniauth-google-oauth2'
+
+gem 'sidekiq'
+
+gem 'whenever', :require => false
+
+gem 'sidekiq-client-cli'
+
+gem 'figaro'
