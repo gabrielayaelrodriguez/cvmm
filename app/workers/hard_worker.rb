@@ -2,11 +2,10 @@ class HardWorker
   include Sidekiq::Worker
 
   def perform
-    UserMailer.welcome_email.deliver_now
+  	users=User.where(admin: false)
+  	users.each do |user|
+    	UserMailer.resources_email(user).deliver_now
+    end
   end
 
-  def self.send_mails
-  #	user = User.last
-  	self.perform_async
-  end
 end

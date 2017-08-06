@@ -1,0 +1,23 @@
+
+Hello, <%= @user.email %>!
+ 
+This is a weekly report of your in-use virtual machines.
+
+  <% if @user.virtual_machines.any? %>
+    <% @user.virtual_machines.each do |virtual_machine| %>
+
+      NAME: <%= virtual_machine.name %>
+      STATE: <%= virtual_machine.state %>
+      OS: <%= virtual_machine.os %>
+      MEMORY: <%= virtual_machine.memory %>
+      CORES: <%= virtual_machine.cores %>
+
+      -------------------------------------
+
+  <% end %>
+  #################END########################
+  <% else %>
+    You have no Virtual Machines at the moment, start creating some!
+  <% end %>
+  
+Thanks for choosing us and have a great Sunday.

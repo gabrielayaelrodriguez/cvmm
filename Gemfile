@@ -87,6 +87,4 @@ gem 'sidekiq'
 
 gem 'whenever', :require => false
 
-gem 'sidekiq-client-cli'
-
 gem 'figaro'

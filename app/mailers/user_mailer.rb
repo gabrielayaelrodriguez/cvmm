@@ -1,9 +1,8 @@
 class UserMailer < ApplicationMailer
-	default from: 'notifications@example.com'
+	default from: 'notifications@cloudvmm.com'
 	 
-	  def welcome_email
-	    @user = User.last
-	    @url  = 'http://example.com/login'
-	    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+	  def resources_email(user)
+	  	@user=user
+	    mail(to: @user.email, subject: 'Weekly Resources Report')
 	  end
 end

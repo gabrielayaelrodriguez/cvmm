@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @user.email %>!</h1>
+    <p>
+      This is a weekly report of your in-use virtual machines.
+      <br>
+    </p>
+
+    <% if @user.virtual_machines.any? %>
+    <% @user.virtual_machines.each do |virtual_machine| %>
+
+      NAME: <%= virtual_machine.name %><br>
+      STATE: <%= virtual_machine.state %><br>
+      OS: <%= virtual_machine.os %><br>
+      MEMORY: <%= virtual_machine.memory %><br>
+      CORES: <%= virtual_machine.cores %><br>
+
+      -------------------------------------
+      <br><br>
+
+  <% end %>
+  <br>
+  #################END########################
+  <br><br>
+  <% else %>
+    You have no Virtual Machines at the moment, start creating some!
+  <% end %>
+    <p>Thanks for choosing us and have a great Sunday.</p>
+  </body>
+
+</html>

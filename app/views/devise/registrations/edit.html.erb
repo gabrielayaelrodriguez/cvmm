@@ -9,9 +9,9 @@
 
     <div class="field">
     <%= f.label :locale %>
-    <div class="input-field col s6">
+
       <%= f.select :locale, options_for_select(['en', 'es'], :selected => current_user.locale), {}, class: 'browser-default grey darken-4' %>
-    </div>
+
   </div>
   
     <%= f.input :email, required: true %>
