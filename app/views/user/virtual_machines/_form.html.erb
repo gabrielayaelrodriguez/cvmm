@@ -10,26 +10,20 @@
       </ul>
     </div>
   <% end %>
-  <div class="input-field col s6">
-    <%= f.input :name %>
-  </div>
+  <%= f.input :name %>
 
   <%= f.label :state %>
 
-    <%= f.select :state, options_for_select(VirtualMachine::POSSIBLE_STATES.map { |s| [I18n.t("possible_states.#{s}"), s] }, :selected => @virtual_machine.state), {}, class: 'browser-default grey darken-4' %>
+  <%= f.select :state, options_for_select(VirtualMachine::POSSIBLE_STATES.map { |s| [I18n.t("possible_states.#{s}"), s] }, :selected => @virtual_machine.state), {}, class: 'browser-default grey darken-4' %>
 
   <br>
 
+  <%= f.input :os %>
 
-  <div class="input-field col s6">
-    <%= f.input :os %>
-  </div>
-  <div class="input-field col s6">
-    <%= f.input :memory, input_html: { min: '0', max: @ram } %>
-  </div>
-  <div class="input-field col s6">
-    <%= f.input :cores, input_html: { min: '0', max: @cores } %>
-  </div>
+  <%= f.input :memory, input_html: { min: '0', max: @ram } %>
+
+  <%= f.input :cores, input_html: { min: '0', max: @cores } %>
+  
   <%= f.button :submit %>
 
 <% end %>

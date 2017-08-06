@@ -11,19 +11,15 @@
     </div>
   <% end %>
 
-  <div class="input-field col s6">
-    <%= f.input :label %>
-  </div>
+  <%= f.input :label %>
 
   <%= f.label :model %>
 
-    <%= f.select :model, options_for_select(['SSD', 'HDD'], :selected => @disk.model), {}, class: 'browser-default grey darken-4' %>
+  <%= f.select :model, options_for_select(['SSD', 'HDD'], :selected => @disk.model), {}, class: 'browser-default grey darken-4' %>
 
   <br>
 
-  <div class="input-field col s6">
-    <%= f.input :capacity, input_html: { min: '0', max: @space } %>
-  </div>
+  <%= f.input :capacity, input_html: { min: '0', max: @space } %>
   <%= f.button :submit %>
 
 <% end %>

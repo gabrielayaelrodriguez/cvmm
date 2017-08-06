@@ -11,15 +11,9 @@
     </div>
   <% end %>
   
-  <div class="input-field col s6">
-    <%= f.input :totalRAM, input_html: { min: '0' } %>
-  </div>
-  <div class="input-field col s6">
-    <%= f.input :totalDiskSpace, input_html: { min: '0' } %>
-  </div>
-  <div class="input-field col s6">
-    <%= f.input :totalCPUCores, input_html: { min: '0' } %>
-  </div>
+  <%= f.input :totalRAM, input_html: { min: '0' } %>
+  <%= f.input :totalDiskSpace, input_html: { min: '0' } %>
+  <%= f.input :totalCPUCores, input_html: { min: '0' } %>
 
   <%= f.button :submit %>
   
